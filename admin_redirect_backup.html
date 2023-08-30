@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paziente Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+       body {
+            background-image: url('https://mieka.co.uk/blurred-interior-hospital-clinical-with-people-abstract-medical-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        }
+
+        .category-section {
+            border: 2px solid #1877f2; /* Increased border width and blue color */
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px; /* Adding rounded corners */
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+        }
+
+        .custom-btn {
+            display: block;
+            padding: 10px 20px;
+            border: none;
+            background-color: #1877f2;
+            color: white;
+            text-align: left;
+            margin-bottom: 10px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .custom-btn:hover {
+            background-color: #165dbb;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-title {
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        <!-- .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        } -->
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; /* adjust spacing between grid items as needed */
+        }
+        
+        .tables-container .option-details {
+            width: 100%;
+            margin-top: 20px; /* Add some spacing between the tables. Adjust as needed. */
+        }        
+
+        .fb-header {
+            color: #1877f2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: text-shadow 0.3s;
+        }
+
+        .fb-header:hover {
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .fb-floating {
+            animation: floatAnimation 3s infinite;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .option-details {
+            display: none;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center fb-header fb-floating">Sistema di Gestione Clinica</h1>
+        <h2 class="text-center fb-header fb-floating">Laboratorio Analisi Sant'Andrea</h2>
+        <h3 class="text-center fb-header fb-floating">Largo Ignazio Ciaia, 19, 70125 Bari BA</h3>
+    </div>
+
+    <div class="container mt-4">
+
+        <!-- Categories Grid Container -->
+        <div class="grid-container">
+    
+            <!-- Paziente (Patient) Options -->
+            <div class="category-section">
+                <h3 class="category-title">Paziente</h3>
+                <a href="#" class="custom-btn">Aggiorna Dettagli Paziente</a>
+                <a href="#" class="custom-btn">Visualizza Storico Medico Paziente</a>
+                <a href="#" class="custom-btn">Fatturazione e Pagamenti Paziente</a>
+                <a href="#" class="custom-btn">Visualizza Appuntamenti</a>
+            </div>
+    
+            <!-- Medico (Doctor) Options -->
+            <div class="category-section">
+                <h3 class="category-title">Medico</h3>
+                <a href="#" class="custom-btn">Aggiorna Dettagli Medico</a>
+                <a href="#" class="custom-btn">Gestisci Disponibilità/Tempo Libero</a>
+                <a href="#" class="custom-btn">Visualizza Pazienti Assegnati</a>
+                <a href="#" class="custom-btn">Note di Consultazione e Prescrizioni</a>
+            </div>
+
+            <!-- Azienda (Company) Options -->
+            <div class="category-section">
+                <h3 class="category-title">Azienda</h3>
+                <a href="#" class="custom-btn">Aggiorna Dettagli Azienda</a>
+                <a href="#" class="custom-btn">Calendario</a>
+                <a href="#" class="custom-btn">Visualizza Pazienti Affiliati</a>
+                <a href="#" class="custom-btn">Gestisci Contratti e Accordi</a>
+                <a href="#" class="custom-btn">Fatturazione e Pagamenti da/verso l'Azienda</a>
+            </div>
+
+            <!-- Laboratorio (Lab) Options -->
+            <div class="category-section">
+                <h3 class="category-title">Laboratorio</h3>
+                <a href="#" class="custom-btn">Gestisci Tipi e Prezzi delle analisi </a>
+                <a href="#" class="custom-btn">Visualizza Richieste delle analisi</a>
+                <a href="#" class="custom-btn">Gestisci Risultati e Rapporti delle analisi</a>
+                <a href="#" class="custom-btn">Gestisci Attrezzature e Inventari del Laboratorio</a>
+                <a href="#" class="custom-btn">Fatturazione e Pagamenti da/verso Laboratorio</a>
+            </div>
+        </div>
+    
+        <!-- Tables Container -->
+        <div class="tables-container">
+    
+            <!-- Paziente Details Table -->
+            <div id="Paziente-Aggiorna-Dettagli-Paziente" class="option-details">
+                <h4>Aggiorna Dettagli Paziente</h4>
+                <table class="table">
+                    <tr>
+                        <td>Nome:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cognome:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Codice Fiscale:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Data di Nascita:</td>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo di residenza:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Luogo di nascita:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo email:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary">Registrati</button>
+            </div>
+    
+            <!-- Storico Medico Table for Paziente -->
+            <div id="Paziente-Visualizza-Storico-Medico-Paziente" class="option-details">
+                <h4>Visualizza Storico Medico Paziente</h4>
+                
+                <!-- Search bar for patient's name -->
+                <div class="search-container">
+                    <input type="text" placeholder="Cerca codice fiscale paziente...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Descrizione</th>
+                            <th>Medico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>YYYY-MM-DD</td>
+                            <td>Descrizione dell'evento medico</td>
+                            <td>Nome del medico</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+    
+            <!-- Fatturazione Pagamenti Table -->
+            <div id="Paziente-Fatturazione-e-Pagamenti-Paziente" class="option-details">
+                <h4>Fatturazione e Pagamenti Paziente</h4>
+                <!-- Search bar for patient's invoice -->
+                <div class="search-container">
+                    <input type="text" placeholder="Cerca il numero della fattura del paziente...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Fattura N.</th>
+                            <th>Data</th>
+                            <th>Importo</th>
+                            <th>Stato Pagamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123</td>
+                            <td>YYYY-MM-DD</td>
+                            <td>Importo in €</td>
+                            <td>Pagato / Non Pagato</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Visualizza Appuntamenti Table -->
+            <div id="Paziente-Visualizza-Appuntamenti" class="option-details">
+                <h4>Visualizza Appuntamenti</h4>
+                <!-- Search bar for patient's name -->
+                <div class="search-container">
+                    <input type="text" placeholder="Cerca codice fiscale paziente...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Ora</th>
+                            <th>Medico</th>
+                            <th>Paziente</th>
+                            <th>Descrizione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>YYYY-MM-DD</td>
+                            <td>HH:MM</td>
+                            <td>Nome del medico</td>
+                            <td>Nome del paziente</td>
+                            <td>Descrizione dell'appuntamento</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Medico Details Table -->
+            <div id="Medico-Aggiorna-Dettagli-Medico" class="option-details">
+                <h4>Aggiorna Dettagli Medico</h4>
+                <table class="table">
+                    <tr>
+                        <td>Nome:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cognome:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Specializzazione:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="email"></td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary">Submit</button>
+            </div>
+
+            <!-- Gestisci Disponibilità/Tempo Libero Table -->
+            <div id="Medico-Gestisci-Disponibilità/Tempo-Libero" class="option-details">
+                <h4>Gestisci Disponibilità/Tempo Libero</h4>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Giorno:</td>
+                            <td><input type="text" placeholder="Inserisci il giorno"></td>
+                        </tr>
+                        <tr>
+                            <td>Orario di inizio:</td>
+                            <td><input type="time"></td>
+                        </tr>
+                        <tr>
+                            <td>Orario di fine:</td>
+                            <td><input type="time"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary">Imposta</button>
+            </div>
+
+            <!-- Pazienti Assegnati Table -->
+            <div id="Medico-Visualizza-Pazienti-Assegnati" class="option-details">
+                <h4>Visualizza Pazienti Assegnati</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome Paziente</th>
+                            <th>Data di Nascita</th>
+                            <th>Ultima Visita</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Note di Consultazione e Prescrizioni Table -->
+            <div id="Medico-Note-di-Consultazione-e-Prescrizioni" class="option-details">
+                <h4>Note di Consultazione e Prescrizioni</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Nome Paziente</th>
+                            <th>Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add rows as needed -->
+                    </tbody>
+                </table>
+        
+            </div>
+       </div> 
+       
+       <!-- Aggiorna Dettagli Azienda Table -->
+        <div id="Azienda-Aggiorna-Dettagli-Azienda" class="option-details">
+            <h4>Aggiorna Dettagli Azienda</h4>
+            <table class="table">
+                <tr>
+                    <td>Ragione Sociale:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Partita IVA:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Indirizzo:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Telefono:</td>
+                    <td><input type="tel"></td>
+                </tr>
+            </table>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+        <!-- Calendario Table -->
+        <div id="Azienda-Calendario" class="option-details">
+            <h4>Calendario</h4>
+            <!-- Add your calendar content here -->
+        </div>
+
+        <!-- Visualizza Pazienti Affiliati Table -->
+        <div id="Azienda-Visualizza-Pazienti-Affiliati" class="option-details">
+            <h4>Visualizza Pazienti Affiliati</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome Paziente</th>
+                        <th>Cognome Paziente</th>
+                        <th>Data di Nascita</th>
+                        <th>Ultimo Appuntamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nome1</td>
+                        <td>Cognome1</td>
+                        <td>YYYY-MM-DD</td>
+                        <td>YYYY-MM-DD</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Gestisci Contratti e Accordi Table -->
+        <div id="Azienda-Gestisci-Contratti" class="option-details">
+            <h4>Gestisci Contratti e Accordi</h4>
+            <!-- Add your contract and agreements content here -->
+        </div>
+
+        <!-- Fatturazione Pagamenti Azienda Table -->
+        <div id="Azienda-Fatturazione-Pagamenti-Azienda" class="option-details">
+            <h4>Fatturazione e Pagamenti Azienda</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Fattura N.</th>
+                        <th>Data</th>
+                        <th>Importo</th>
+                        <th>Stato Pagamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>123</td>
+                        <td>YYYY-MM-DD</td>
+                        <td>Importo in €</td>
+                        <td>Pagato / Non Pagato</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    
+
+    <!-- Bootstrap and jQuery libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for revealing tables on button click -->
+    <script>
+        $(document).ready(function () {
+            $('.custom-btn').on('click', function (e) {
+                e.preventDefault(); 
+                
+                const category = $(this).closest('.category-section').find('.category-title').text().trim();
+                const buttonName = $(this).text().trim().replace(/ /g, '-');
+                const combinedID = category + '-' + buttonName;
+                
+                $('.option-details').hide(); 
+                $('#' + combinedID).show();
+            });        
+        });
+    </script>
+
+</body>
+
+
