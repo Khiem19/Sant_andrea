@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paziente Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-image: url('https://mieka.co.uk/blurred-interior-hospital-clinical-with-people-abstract-medical-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .category-section {
+            border: 2px solid #1877f2;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-btn {
+            display: block;
+            padding: 10px 20px;
+            border: none;
+            background-color: #1877f2;
+            color: white;
+            text-align: left;
+            margin-bottom: 10px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .custom-btn:hover {
+            background-color: #165dbb;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-title {
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .option-details {
+            display: none;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .fb-header {
+            color: #1877f2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: text-shadow 0.3s;
+        }
+
+        .fb-header:hover {
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .fb-floating {
+            animation: floatAnimation 3s infinite;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-4">
+        <h1 class="text-center fb-header fb-floating">Sistema di Gestione Clinica</h1>
+        <h2 class="text-center fb-header fb-floating">Laboratorio Analisi Sant'Andrea</h2>
+        <h3 class="text-center fb-header fb-floating">Largo Ignazio Ciaia, 19, 70125 Bari BA</h3>
+    </div>
+
+    <div class="container mt-4 grid-container">
+        <!-- Paziente (Patient) Options -->
+        <div class="category-section">
+            <h3 class="category-title">Paziente</h3>
+            <a href="#paziente-details" class="custom-btn"><i class="fa fa-refresh"></i> Aggiorna Dettagli Paziente</a>
+            <a href="#storico-medico" class="custom-btn"><i class="fa fa-history"></i> Visualizza Storico Medico Paziente</a>
+            <a href="#pianifica-follow-up" class="custom-btn"><i class="fa fa-calendar"></i> Pianifica Follow-up</a>
+            <a href="#fatturazione-pagamenti" class="custom-btn"><i class="fa fa-euro"></i> Fatturazione e Pagamenti Paziente</a>
+            <a href="#visualizza-appuntamenti" class="custom-btn"><i class="fa fa-eye"></i> Visualizza Appuntamenti</a>
+        </div>
+
+        <!-- Paziente Details Table -->
+        <div id="paziente-details" class="option-details">
+            <h4>Aggiorna Dettagli Paziente</h4>
+            <table class="table">
+                <tr>
+                    <td>Nome:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Cognome:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Data di Nascita:</td>
+                    <td><input type="date"></td>
+                </tr>
+                <tr>
+                    <td>Indirizzo:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Numero di Telefono:</td>
+                    <td><input type="tel"></td>
+                </tr>
+            </table>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+<!-- Storico Medico Table -->
+<div id="storico-medico" class="option-details">
+    <h4>Visualizza Storico Medico Paziente</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Descrizione</th>
+                <th>Medico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>YYYY-MM-DD</td>
+                <td>Descrizione dell'evento medico</td>
+                <td>Nome del medico</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <button class="btn btn-primary">Submit</button>
+</div>
+
+<!-- Pianifica Follow-up Table -->
+<div id="pianifica-follow-up" class="option-details">
+    <h4>Pianifica Follow-up</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Ora</th>
+                <th>Descrizione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="date"></td>
+                <td><input type="time"></td>
+                <td>Descrizione dell'appuntamento</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <button class="btn btn-primary">Submit</button>
+</div>
+
+<!-- Fatturazione Pagamenti Table -->
+<div id="fatturazione-pagamenti" class="option-details">
+    <h4>Fatturazione e Pagamenti Paziente</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fattura N.</th>
+                <th>Data</th>
+                <th>Importo</th>
+                <th>Stato Pagamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>123</td>
+                <td>YYYY-MM-DD</td>
+                <td>Importo in €</td>
+                <td>Pagato / Non Pagato</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <button class="btn btn-primary">Submit</button>
+</div>
+
+<!-- Visualizza Appuntamenti Table -->
+<div id="visualizza-appuntamenti" class="option-details">
+    <h4>Visualizza Appuntamenti</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Ora</th>
+                <th>Medico</th>
+                <th>Descrizione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>YYYY-MM-DD</td>
+                <td>HH:MM</td>
+                <td>Nome del medico</td>
+                <td>Descrizione dell'appuntamento</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <button class="btn btn-primary">Submit</button>
+</div>
+
+    <!-- Bootstrap and jQuery libraries (necessary for Bootstrap) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(".custom-btn").click(function () {
+            var target = $(this).attr("href");
+            $(target).toggle();
+            return false;
+        });
+    </script>
+
+</body>
+
+</html>
