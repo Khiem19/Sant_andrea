@@ -153,41 +153,6 @@
         <div class="tables-container">
             <!-- Paziente Database Table -->
             <div id="Paziente-Dettagli-Paziente" class="option-details">
-                <h4>Registrazione</h4>
-                <table class="table">
-                    <tr>
-                        <td>Nome:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Cognome:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Codice Fiscale/P.IVA:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Cod. univoco/SDI:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Indirizzo di fatturazione:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Cellulare:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Indirizzo email:</td>
-                        <td><input type="text"></td>
-                    </tr>
-                </table>
-                <button class="btn btn-primary">Registrati</button>
-                
-                <br><br>
-
                 <h4>Dettagli del Paziente</h4>
                 <table class="table">
                     <thead>
@@ -278,7 +243,7 @@
                     <tbody>
                         <tr>
                             <td>001</td>
-                            <td>YYYY-MM-DD</td>
+                            <td>mm-dd-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
                                 <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
@@ -351,10 +316,6 @@
                 $('.option-details').hide(); 
                 $('#' + combinedID).show();
 
-                // Smooth scroll to the revealed table
-                $('html, body').animate({
-                    scrollTop: $('#' + combinedID).offset().top
-                }, 750, 'swing'); // Increased the animation duration to 750ms (0.75 seconds) for smoother scrolling.
             });        
         });        
     </script>
