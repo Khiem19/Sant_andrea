@@ -139,21 +139,22 @@
         <!-- Categories Grid Container -->
         <div class="grid-container">
     
-            <!-- Paziente (Patient) Options -->
+            <!-- Medico (Doctor) Options -->
             <div class="category-section">
-                <h3 class="category-title">Paziente</h3>
-                <a href="#" class="custom-btn">Dettagli Paziente</a>
-                <a href="#" class="custom-btn">Visualizza Storico Medico Paziente</a>
-                <a href="#" class="custom-btn">Fatturazione e Pagamenti Paziente</a>
-                <a href="#" class="custom-btn">Visualizza Appuntamenti</a>
+                <h3 class="category-title">Medico</h3>
+                <a href="#" class="custom-btn">Dettagli Medico</a>
+                <a href="#" class="custom-btn">Gestisci Disponibilità/Tempo Libero</a>
+                <a href="#" class="custom-btn">Visualizza Pazienti Assegnati</a>
+                <a href="#" class="custom-btn">Note di Consultazione e Prescrizioni</a>
+                <a href="#" class="custom-btn">Fatturazione e Pagamenti Medico </a>
             </div>
         </div>
 
         <!-- Tables Container -->
         <div class="tables-container">
-            <!-- Paziente Database Table -->
-            <div id="Paziente-Dettagli-Paziente" class="option-details">
-                <h4>Dettagli del Paziente</h4>
+            <!-- Medico Details Table -->
+            <div id="Medico-Dettagli-Medico" class="option-details">
+                <h4>Dettagli Medico</h4>
                 <table class="table">
                     <thead>
                         <tr>
@@ -186,45 +187,127 @@
                 </table>
             </div>
 
-            <!-- Storico Medico Table for Paziente -->
-            <div id="Paziente-Visualizza-Storico-Medico-Paziente" class="option-details">
-                <h4>Visualizza Storico Medico Paziente</h4>
-                
-                <!-- Search bar for patient's name -->
-                <div class="search-container">
-                    <input type="date" placeholder="Cercare la data...">
-                    <button class="btn btn-primary">Cerca</button>
+            <!-- Gestisci Disponibilità/Tempo Libero Section -->
+            <div id="Medico-Gestisci-Disponibilità-Tempo-Libero" class="option-details">
+                <h4>Gestisci Disponibilità/Tempo Libero</h4>            
+                <div class="availability-section">
+                    <!-- Patient Name Input -->
+                    <h6>Paziente:</h6>
+                    <input type="text" id="paziente" placeholder="Nome del paziente">
+
+                    <!-- Service Type Dropdown -->
+                    <h6>Tipo di servizio:</h6>
+                    <select name="serviceType" id="serviceType">
+                        <option value="consultation">Consultazione con il medico</option>
+                        <option value="bloodTest">Esame del sangue</option>
+                        <option value="urinalysis">Analisi delle urine</option>
+                        <option value="xray">Radiografia (X-ray)</option>
+                        <option value="ultrasound">Ecografia</option>
+                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
+                        <option value="spirometry">Spirometria</option>
+                        <option value="boneDensity">Test di densità ossea</option>
+                        <option value="colonoscopy">Colonscopia</option>
+                        <option value="gastroscopy">Gastroscopia</option>
+                        <option value="allergyTest">Test allergologico</option>
+                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
+                        <option value="mammography">Mammografia</option>
+                    </select>
+                    
+                    <!-- Date Picker -->
+                    <h6>Giorno:</h6>
+                    <input type="date" id="giorno">
+                    
+                    <!-- Start Time Dropdown -->
+                    <h6>Orario di inizio:</h6>
+                    <input type="time" id="inizio">
+
+                    <!-- End Time Dropdown -->
+                    <h6>Orario di fine:</h6>
+                    <input type="time" id="fine">
+                    
+                    <br><br>
+
+                    <!-- Submit Button -->
+                    <button class="btn btn-primary">Conferma</button>
                 </div>
-                
-                <br><br>
-                
+            </div>
+
+            <!-- Pazienti Assegnati Table -->
+            <div id="Medico-Visualizza-Pazienti-Assegnati" class="option-details">
+                <h4>Visualizza Pazienti Assegnati</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Codice Fiscale</th>
+                            <th>Nome Medico</th>
+                            <th>Nome Paziente</th>
+                            <th>Codice Fiscale del Paziente</th>
+                            <th>Tipo di Consultazione</th>
                             <th>Data</th>
-                            <th>Descrizione</th>
-                            <th>Medico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Note di Consultazione e Prescrizioni Table -->
+            <div id="Medico-Note-di-Consultazione-e-Prescrizioni" class="option-details">
+                <h4>Note di Consultazione e Prescrizioni</h4>
+
+                <!-- Search bar for patient's name or Codice Fiscale -->
+                <div class="search-container">
+                    <input type="text" id="searchPatient" placeholder="Ricerca per paziente in base al Codice Fiscale...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+
+                <br><br>
+                <!-- Upload section -->
+                <div class="file-upload">
+                    <h6>Carica PDF Nota:</h6>
+                    <label for="uploadPdf" class="file-upload-label">Seleziona file</label>
+                    <input type="file" id="uploadPdf" accept=".pdf" style="display:none;">
+                    <span id="fileName">Nessun file selezionato</span>
+                </div>
+        
+                <button class="btn btn-primary upload-button">Carica</button>
+
+                <br><br>
+                <!-- Previous Notes and Prescriptions Table -->
+                <h5>Elenco precedente:</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Nome Paziente</th>
+                            <th>Codice Fiscale</th>
+                            <th>Nome Medico</th>
+                            <th>Nota</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>CF1234567890</td>
-                            <td>mm-dd-yyyy</td>
-                            <td>Descrizione dell'evento medico</td>
+                            <td>dd-mm-yyyy</td>
+                            <td>Nome del paziente</td>
+                            <td>AAABBB12C34D567E</td>
                             <td>Nome del medico</td>
+                            <td>
+                                📄 <!-- PDF icon placeholder -->
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Scarica</a>
+                            </td>
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
                 </table>
             </div>
 
-            <!-- Fatturazione Pagamenti Table -->
-            <div id="Paziente-Fatturazione-e-Pagamenti-Paziente" class="option-details">
-                <h4>Fatturazione e Pagamenti Paziente</h4>
-                <!-- Search bar for patient's invoice -->
+
+            <!-- Fatturazione e Pagamenti Medico Table -->
+            <div id="Medico-Fatturazione-e-Pagamenti-Medico" class="option-details">
+                <h4>Fatturazione e Pagamenti Medico</h4>
+
                 <div class="search-container">
-                    <input type="text" placeholder="Cerca il numero della fattura del paziente...">
+                    <input type="text" placeholder="Cerca il numero della fattura del Medico...">
                     <button class="btn btn-primary">Cerca</button>
                 </div>
                 
@@ -242,7 +325,7 @@
                     <tbody>
                         <tr>
                             <td>001</td>
-                            <td>mm-dd-yyyy</td>
+                            <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
                                 <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
@@ -255,43 +338,7 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Visualizza Appuntamenti Table -->
-            <div id="Paziente-Visualizza-Appuntamenti" class="option-details">
-                <h4>Visualizza Appuntamenti</h4>
-                <!-- Search bar for patient's name -->
-                <div class="search-container">
-                    <input type="date" placeholder="Cercare la data...">
-                    <button class="btn btn-primary">Cerca</button>
-                </div>
-
-                <br><br>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Ora</th>
-                            <th>Medico</th>
-                            <th>Paziente</th>
-                            <th>Descrizione</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>mm-dd-yyyy</td>
-                            <td>HH:MM</td>
-                            <td>Nome del medico</td>
-                            <td>Nome del paziente</td>
-                            <td>Descrizione dell'appuntamento</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
-            </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap and jQuery libraries -->

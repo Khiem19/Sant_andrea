@@ -139,21 +139,22 @@
         <!-- Categories Grid Container -->
         <div class="grid-container">
     
-            <!-- Paziente (Patient) Options -->
+            <!-- Azienda (Company) Options -->
             <div class="category-section">
-                <h3 class="category-title">Paziente</h3>
-                <a href="#" class="custom-btn">Dettagli Paziente</a>
-                <a href="#" class="custom-btn">Visualizza Storico Medico Paziente</a>
-                <a href="#" class="custom-btn">Fatturazione e Pagamenti Paziente</a>
-                <a href="#" class="custom-btn">Visualizza Appuntamenti</a>
+                <h3 class="category-title">Azienda</h3>
+                <a href="#" class="custom-btn">Dettagli Azienda</a>
+                <a href="#" class="custom-btn">Calendario</a>
+                <a href="#" class="custom-btn">Visualizza Azienda Affiliati</a>
+                <a href="#" class="custom-btn">Gestisci Contratti e Accordi</a>
+                <a href="#" class="custom-btn">Fatturazione e Pagamenti Azienda</a>
             </div>
         </div>
 
         <!-- Tables Container -->
         <div class="tables-container">
-            <!-- Paziente Database Table -->
-            <div id="Paziente-Dettagli-Paziente" class="option-details">
-                <h4>Dettagli del Paziente</h4>
+            <!-- Aggiorna Dettagli Azienda Table -->
+            <div id="Azienda-Dettagli-Azienda" class="option-details">
+                <h4>Elenco Azienda</h4>
                 <table class="table">
                     <thead>
                         <tr>
@@ -186,49 +187,151 @@
                 </table>
             </div>
 
-            <!-- Storico Medico Table for Paziente -->
-            <div id="Paziente-Visualizza-Storico-Medico-Paziente" class="option-details">
-                <h4>Visualizza Storico Medico Paziente</h4>
+            <!-- Calendario Table -->
+            <div id="Azienda-Calendario" class="option-details">
+                <h4>Calendario</h4>
                 
-                <!-- Search bar for patient's name -->
-                <div class="search-container">
-                    <input type="date" placeholder="Cercare la data...">
-                    <button class="btn btn-primary">Cerca</button>
+                <h5>Prenota una visita</h5>
+                
+                <div class="booking-section">
+                    <!-- Service Type Dropdown -->
+                    <h6>Tipo di servizio:</h6>
+                    <select name="serviceType" id="serviceType">
+                        <option value="consultation">Consultazione con il medico</option>
+                        <option value="bloodTest">Esame del sangue</option>
+                        <option value="urinalysis">Analisi delle urine</option>
+                        <option value="xray">Radiografia (X-ray)</option>
+                        <option value="ultrasound">Ecografia</option>
+                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
+                        <option value="spirometry">Spirometria</option>
+                        <option value="boneDensity">Test di densità ossea</option>
+                        <option value="colonoscopy">Colonscopia</option>
+                        <option value="gastroscopy">Gastroscopia</option>
+                        <option value="allergyTest">Test allergologico</option>
+                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
+                        <option value="mammography">Mammografia</option>
+                        <!-- Add more types as needed -->
+                    </select>
+                    
+                    <!-- Date Picker -->
+                    <h6>Data:</h6>
+                    <input type="date" id="datePicker">
+
+                    <!-- Time Dropdown -->
+                    <h6>Orario:</h6>
+                    <input type="time" id="timePicker">
+
+                    <!-- Book Button -->
+                    <button class="btn btn-primary">Prenota</button>
                 </div>
                 
-                <br><br>
-                
+                <!-- You can add an actual calendar display below if needed -->
+                <h5>Prenotazioni esistenti</h5>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Codice Fiscale</th>
+                            <th>Tipo di servizio</th>
                             <th>Data</th>
-                            <th>Descrizione</th>
-                            <th>Medico</th>
+                            <th>Orario</th>
+                            <th>Nome Azienda</th>
+                            <th>Nome Medico</th>
+                            <th>Azioni</th>  <!-- for any actions like delete or edit -->
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- This would ideally be populated dynamically based on your server's data -->
                         <tr>
-                            <td>CF1234567890</td>
-                            <td>mm-dd-yyyy</td>
-                            <td>Descrizione dell'evento medico</td>
-                            <td>Nome del medico</td>
+                            <td>Esame del sangue</td>
+                            <td>2023-09-10</td>
+                            <td>10:00</td>
+                            <td>Sant Andrea</td>
+                            <td>Dr. Anita</td>
+                            <td>
+                                <button class="btn btn-edit">Modifica</button>
+                                <button class="btn btn-delete">Elimina</button>
+                            </td>
                         </tr>
-                        <!-- Add more rows as needed -->
+                        <!-- Add more rows based on bookings -->
                     </tbody>
                 </table>
             </div>
 
-            <!-- Fatturazione Pagamenti Table -->
-            <div id="Paziente-Fatturazione-e-Pagamenti-Paziente" class="option-details">
-                <h4>Fatturazione e Pagamenti Paziente</h4>
-                <!-- Search bar for patient's invoice -->
+
+            <!-- Visualizza Pazienti Affiliati Table -->
+            <div id="Azienda-Visualizza-Azienda-Affiliati" class="option-details">
+                <h4>Visualizza Azienda Affiliati</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome Azienda</th>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale/P.IVA</th>
+                            <th>Cod. univoco/SDI</th>
+                            <th>Indirizzo di fatturazione</th>
+                            <th>Cellulare</th>
+                            <th>Indirizzo email</th>
+                            <th>Documento (PDF)</th> <!-- Column to view & download the PDF -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Sant Andrea</td>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
+                            <td>Via Roma, 10</td>
+                            <td>0123456789</td>
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <a href="path_to_pdf_file.pdf" download>
+                                    <img src="pdf_icon.png" alt="Download PDF" title="Scarica il documento PDF">
+                                </a>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Gestisci Contratti e Accordi Table -->
+            <div id="Azienda-Gestisci-Contratti-e-Accordi" class="option-details">
+                <h4>Gestisci Contratti e Accordi</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome Azienda</th>
+                            <th>Contratto</th> <!-- Column to view & download the contract -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Sant Andrea</td>
+                            <td>
+                                <a href="path_to_contract.pdf" download>
+                                    <img src="pdf_icon.png" alt="Download Contract" title="Scarica il contratto">
+                                </a>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Fatturazione e Pagamenti Azienda Table -->
+            <div id="Azienda-Fatturazione-e-Pagamenti-Azienda" class="option-details">
+                <h4>Fatturazione e Pagamenti Azienda</h4>
                 <div class="search-container">
-                    <input type="text" placeholder="Cerca il numero della fattura del paziente...">
+                    <input type="text" placeholder="Cerca il numero della fattura del Azienda...">
                     <button class="btn btn-primary">Cerca</button>
                 </div>
                 
-                <br><br>
+                <br><br><br><br>
 
                 <table class="table">
                     <thead>
@@ -242,7 +345,7 @@
                     <tbody>
                         <tr>
                             <td>001</td>
-                            <td>mm-dd-yyyy</td>
+                            <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
                                 <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
@@ -255,43 +358,7 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Visualizza Appuntamenti Table -->
-            <div id="Paziente-Visualizza-Appuntamenti" class="option-details">
-                <h4>Visualizza Appuntamenti</h4>
-                <!-- Search bar for patient's name -->
-                <div class="search-container">
-                    <input type="date" placeholder="Cercare la data...">
-                    <button class="btn btn-primary">Cerca</button>
-                </div>
-
-                <br><br>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Ora</th>
-                            <th>Medico</th>
-                            <th>Paziente</th>
-                            <th>Descrizione</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>mm-dd-yyyy</td>
-                            <td>HH:MM</td>
-                            <td>Nome del medico</td>
-                            <td>Nome del paziente</td>
-                            <td>Descrizione dell'appuntamento</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
-            </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap and jQuery libraries -->
