@@ -123,49 +123,99 @@
             background-color: #1565c0;
         }
 
+        .lang-toggle-wrapper {
+            display: flex;
+            justify-content: flex-end; /* Aligns button to the right side of the container */
+            padding: 10px;
+        }
+        
+        .lang-toggle-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff; /* A typical medical blue */
+            border-radius: 15px;
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-toggle-btn:hover {
+            background-color: #007bff; /* Button background turns blue on hover */
+            color: #ffffff; /* Text becomes white on hover */
+        }
+        
+        /* This is just to keep in line with the theme. */
+        .fb-header {
+            color: #007bff; /* Matches the button border color */
+        }
+
     </style>
 </head>
 
 <body>
-
     <div class="container mt-4">
-        <h1 class="text-center fb-header fb-floating">Sistema di Gestione Clinica</h1>
-        <h2 class="text-center fb-header fb-floating">Laboratorio Analisi Sant'Andrea</h2>
-        <h3 class="text-center fb-header fb-floating">Largo Ignazio Ciaia, 19, 70125 Bari BA</h3>
+        <h1 class="text-center fb-header fb-floating" 
+            data-lang-it="Sistema di Gestione Clinica" 
+            data-lang-eng="Clinical Management System">
+            Sistema di Gestione Clinica
+        </h1>
+        <h2 class="text-center fb-header fb-floating" 
+            data-lang-it="Laboratorio Analisi Sant'Andrea" 
+            data-lang-eng="Saint Andrea Analysis Laboratory">
+            Laboratorio Analisi Sant'Andrea
+        </h2>
+        <h3 class="text-center fb-header fb-floating" 
+            data-lang-it="Largo Ignazio Ciaia, 19, 70125 Bari BA" 
+            data-lang-eng="Largo Ignazio Ciaia, 19, 70125 Bari BA">
+            Largo Ignazio Ciaia, 19, 70125 Bari BA
+        </h3>
     </div>
 
     <div class="container mt-4">
-
+        <button id="langToggle" data-current-lang="IT" class="lang-toggle-btn">ENG</button>
         <!-- Categories Grid Container -->
         <div class="grid-container">
     
             <!-- Medico (Doctor) Options -->
             <div class="category-section">
-                <h3 class="category-title">Medico</h3>
-                <a href="#" class="custom-btn">Dettagli Medico</a>
-                <a href="#" class="custom-btn">Gestisci Disponibilità/Tempo Libero</a>
-                <a href="#" class="custom-btn">Visualizza Pazienti Assegnati</a>
-                <a href="#" class="custom-btn">Note di Consultazione e Prescrizioni</a>
-                <a href="#" class="custom-btn">Fatturazione e Pagamenti Medico </a>
+                <h3 class="category-title" 
+                    data-lang-it="Medico" 
+                    data-lang-eng="Doctor">Medico</h3>          
+                <a href="#" class="custom-btn" 
+                    data-lang-it="Dettagli Medico" 
+                    data-lang-eng="Doctor Details">Dettagli Medico</a>     
+                <a href="#" class="custom-btn" 
+                    data-lang-it="Gestisci-Disponibilita-Tempo-Libero" 
+                    data-lang-eng="Manage-Availability-Free-Time">Gestisci Disponibilità/Tempo Libero</a>                                 
+                <a href="#" class="custom-btn" 
+                    data-lang-it="Visualizza Pazienti Assegnati" 
+                    data-lang-eng="View Assigned Patients">Visualizza Pazienti Assegnati</a>
+                <a href="#" class="custom-btn" 
+                    data-lang-it="Note di Consultazione e Prescrizioni" 
+                    data-lang-eng="Consultation Notes and Prescriptions">Note di Consultazione e Prescrizioni</a>
+                <a href="#" class="custom-btn" 
+                    data-lang-it="Fatturazione e Pagamenti Medico" 
+                    data-lang-eng="Doctor's Billing and Payments">Fatturazione e Pagamenti Medico</a>
             </div>
+    
         </div>
 
         <!-- Tables Container -->
         <div class="tables-container">
             <!-- Medico Details Table -->
             <div id="Medico-Dettagli-Medico" class="option-details">
-                <h4>Dettagli Medico</h4>
+                <h4 data-lang-it="Dettagli Medico" data-lang-eng="Doctor Details">Dettagli Medico</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Codice Fiscale/P.IVA</th>
-                            <th>Cod. univoco/SDI</th>
-                            <th>Indirizzo di fatturazione</th>
-                            <th>Cellulare</th>
-                            <th>Indirizzo email</th>
-                            <th>Azioni</th> <!-- Column for actions like edit, delete etc. -->
+                            <th data-lang-it="Nome" data-lang-eng="Name">Nome</th>
+                            <th data-lang-it="Cognome" data-lang-eng="Surname">Cognome</th>
+                            <th data-lang-it="Codice Fiscale/P.IVA" data-lang-eng="Fiscal Code/VAT">Codice Fiscale/P.IVA</th>
+                            <th data-lang-it="Cod. univoco/SDI" data-lang-eng="Unique Code/SDI">Cod. univoco/SDI</th>
+                            <th data-lang-it="Indirizzo di fatturazione" data-lang-eng="Billing Address">Indirizzo di fatturazione</th>
+                            <th data-lang-it="Cellulare" data-lang-eng="Mobile">Cellulare</th>
+                            <th data-lang-it="Indirizzo email" data-lang-eng="Email Address">Indirizzo email</th>
+                            <th data-lang-it="Azioni" data-lang-eng="Actions">Azioni</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -179,70 +229,58 @@
                             <td>0123456789</td>
                             <td>mario.rossi@example.com</td>
                             <td>
-                                <button class="btn btn-small btn-edit">📝 Modifica</button>
+                                <button class="btn btn-small btn-edit" 
+                                data-lang-it="📝 Modifica" 
+                                data-lang-eng="📝 Edit">📝 Modifica</button>
                             </td>                            
                         </tr>
-                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                        <!-- More rows -->
                     </tbody>
                 </table>
             </div>
 
-            <!-- Gestisci Disponibilità/Tempo Libero Section -->
-            <div id="Medico-Gestisci-Disponibilità-Tempo-Libero" class="option-details">
-                <h4>Gestisci Disponibilità/Tempo Libero</h4>            
+            <!-- Manage Availability/Free Time Section -->
+            <div id="Medico-Gestisci-Disponibilita-Tempo-Libero" class="option-details">
+                <h4 data-lang-it="Gestisci Disponibilità/Tempo Libero" data-lang-eng="Manage Availability/Free Time">Gestisci Disponibilità/Tempo Libero</h4>            
                 <div class="availability-section">
                     <!-- Patient Name Input -->
-                    <h6>Paziente:</h6>
+                    <h6 data-lang-it="Paziente:" data-lang-eng="Patient:">Paziente:</h6>
                     <input type="text" id="paziente" placeholder="Nome del paziente">
 
-                    <!-- Service Type Dropdown -->
-                    <h6>Tipo di servizio:</h6>
-                    <select name="serviceType" id="serviceType">
-                        <option value="consultation">Consultazione con il medico</option>
-                        <option value="bloodTest">Esame del sangue</option>
-                        <option value="urinalysis">Analisi delle urine</option>
-                        <option value="xray">Radiografia (X-ray)</option>
-                        <option value="ultrasound">Ecografia</option>
-                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
-                        <option value="spirometry">Spirometria</option>
-                        <option value="boneDensity">Test di densità ossea</option>
-                        <option value="colonoscopy">Colonscopia</option>
-                        <option value="gastroscopy">Gastroscopia</option>
-                        <option value="allergyTest">Test allergologico</option>
-                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
-                        <option value="mammography">Mammografia</option>
-                    </select>
-                    
+                    <!-- Service Type Textarea -->
+                    <h6 data-lang-it="Tipo di servizio:" data-lang-eng="Service Type:">Tipo di servizio:</h6>
+                    <textarea id="serviceType" rows="10" placeholder="Inserisci il tipo di servizio" style="width: 100%;"></textarea>
+
                     <!-- Date Picker -->
-                    <h6>Giorno:</h6>
+                    <h6 data-lang-it="Giorno:" data-lang-eng="Day:">Giorno:</h6>
                     <input type="date" id="giorno">
-                    
+
                     <!-- Start Time Dropdown -->
-                    <h6>Orario di inizio:</h6>
+                    <h6 data-lang-it="Orario di inizio:" data-lang-eng="Start Time:">Orario di inizio:</h6>
                     <input type="time" id="inizio">
 
                     <!-- End Time Dropdown -->
-                    <h6>Orario di fine:</h6>
+                    <h6 data-lang-it="Orario di fine:" data-lang-eng="End Time:">Orario di fine:</h6>
                     <input type="time" id="fine">
-                    
+
                     <br><br>
 
                     <!-- Submit Button -->
-                    <button class="btn btn-primary">Conferma</button>
+                    <button class="btn btn-primary" data-lang-it="Conferma" data-lang-eng="Confirm">Conferma</button>
                 </div>
             </div>
 
             <!-- Pazienti Assegnati Table -->
             <div id="Medico-Visualizza-Pazienti-Assegnati" class="option-details">
-                <h4>Visualizza Pazienti Assegnati</h4>
+                <h4 data-lang-it="Visualizza Pazienti Assegnati" data-lang-eng="View Assigned Patients">Visualizza Pazienti Assegnati</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome Medico</th>
-                            <th>Nome Paziente</th>
-                            <th>Codice Fiscale del Paziente</th>
-                            <th>Tipo di Consultazione</th>
-                            <th>Data</th>
+                            <th data-lang-it="Nome Medico" data-lang-eng="Doctor Name">Nome Medico</th>
+                            <th data-lang-it="Nome Paziente" data-lang-eng="Patient Name">Nome Paziente</th>
+                            <th data-lang-it="Codice Fiscale del Paziente" data-lang-eng="Patient's Fiscal Code">Codice Fiscale del Paziente</th>
+                            <th data-lang-it="Tipo di Consultazione" data-lang-eng="Consultation Type">Tipo di Consultazione</th>
+                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -253,39 +291,17 @@
 
             <!-- Note di Consultazione e Prescrizioni Table -->
             <div id="Medico-Note-di-Consultazione-e-Prescrizioni" class="option-details">
-                <h4>Note di Consultazione e Prescrizioni</h4>
-
-                <!-- Search bar for patient's name or Codice Fiscale -->
-                <div class="search-container">
-                    <input type="text" id="searchPatient" placeholder="Ricerca per paziente in base al Codice Fiscale...">
-                    <button class="btn btn-primary">Cerca</button>
-                </div>
-
-                <br><br>
-                <!-- Upload section -->
-                <div class="file-upload">
-                    <h6>Carica PDF Nota:</h6>
-                    <label for="uploadPdf" class="file-upload-label">Seleziona file</label>
-                    <input type="file" id="uploadPdf" accept=".pdf" style="display:none;">
-                    <span id="fileName">Nessun file selezionato</span>
-                </div>
-        
-                <button class="btn btn-primary upload-button">Carica</button>
-
-                <br><br>
-                <!-- Previous Notes and Prescriptions Table -->
-                <h5>Elenco precedente:</h5>
+                <h4 data-lang-it="Visualizza Pazienti Assegnati" data-lang-eng="View Assigned Patients">Visualizza Pazienti Assegnati</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Data</th>
-                            <th>Nome Paziente</th>
-                            <th>Codice Fiscale</th>
-                            <th>Nome Medico</th>
-                            <th>Nota</th>
+                            <th data-lang-it="Nome Medico" data-lang-eng="Doctor Name">Nome Medico</th>
+                            <th data-lang-it="Nome Paziente" data-lang-eng="Patient Name">Nome Paziente</th>
+                            <th data-lang-it="Codice Fiscale del Paziente" data-lang-eng="Patient's Fiscal Code">Codice Fiscale del Paziente</th>
+                            <th data-lang-it="Tipo di Consultazione" data-lang-eng="Consultation Type">Tipo di Consultazione</th>
+                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                    </thead>                    <tbody>
                         <tr>
                             <td>dd-mm-yyyy</td>
                             <td>Nome del paziente</td>
@@ -304,22 +320,18 @@
 
             <!-- Fatturazione e Pagamenti Medico Table -->
             <div id="Medico-Fatturazione-e-Pagamenti-Medico" class="option-details">
-                <h4>Fatturazione e Pagamenti Medico</h4>
-
+                <h4 data-lang-it="Fatturazione e Pagamenti Medico" data-lang-eng="Doctor's Billing and Payments">Fatturazione e Pagamenti Medico</h4>
                 <div class="search-container">
                     <input type="text" placeholder="Cerca il numero della fattura del Medico...">
-                    <button class="btn btn-primary">Cerca</button>
+                    <button class="btn btn-primary" data-lang-it="Cerca" data-lang-eng="Search">Cerca</button>
                 </div>
-                
-                <br><br>
-
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Numero Fattura</th>
-                            <th>Data</th>
-                            <th>Stato del Pagamento</th>
-                            <th>Ricevuta</th>
+                            <th data-lang-it="Numero Fattura" data-lang-eng="Invoice Number">Numero Fattura</th>
+                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
+                            <th data-lang-it="Stato del Pagamento" data-lang-eng="Payment Status">Stato del Pagamento</th>
+                            <th data-lang-it="Ricevuta" data-lang-eng="Receipt">Ricevuta</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -328,11 +340,11 @@
                             <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
-                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
-                                <label for="ricevutaUpload001">Carica</label> |
-                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>    
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -350,20 +362,42 @@
     <script>
         $(document).ready(function () {
             $('.custom-btn').on('click', function (e) {
-                e.preventDefault(); 
-                
-                const category = $(this).closest('.category-section').find('.category-title').text().trim();
-                let buttonName = $(this).text().trim();
-                buttonName = buttonName.replace(/ /g, '-');
-                buttonName = buttonName.replace(/\//g, '-'); // Replacing "/" with "-"
-                
-                const combinedID = category + '-' + buttonName;
-                
-                $('.option-details').hide(); 
+                e.preventDefault();
+        
+                const category = $(this).closest('.category-section').find('.category-title').data('lang-it').replace(/ /g, '-');
+                const option = $(this).data('lang-it').replace(/ /g, '-');
+                const combinedID = category + '-' + option;
+        
+                $('.option-details').hide();
                 $('#' + combinedID).show();
-
-            });        
-        });        
+            });
+        
+            $('#langToggle').on('click', function() {
+                const currentLang = $(this).attr('data-current-lang');
+                let newLang, buttonLabel;
+        
+                if (currentLang === "IT") {
+                    newLang = "ENG";
+                    buttonLabel = "IT";
+                } else {
+                    newLang = "IT";
+                    buttonLabel = "ENG";
+                }
+                
+                $(this).attr('data-current-lang', newLang).text(buttonLabel);
+        
+                $('[data-lang-it]').each(function() {
+                    const itText = $(this).attr('data-lang-it');
+                    const engText = $(this).attr('data-lang-eng');
+        
+                    if (newLang === "IT") {
+                        $(this).text(itText);
+                    } else {
+                        $(this).text(engText);
+                    }
+                });
+            });
+        });                
     </script>
 
 </body>
