@@ -126,6 +126,32 @@
             background-color: #1565c0;
         }
 
+        .lang-toggle-wrapper {
+            display: flex;
+            justify-content: flex-end; /* Aligns button to the right side of the container */
+            padding: 10px;
+        }
+        
+        .lang-toggle-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff; /* A typical medical blue */
+            border-radius: 15px;
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-toggle-btn:hover {
+            background-color: #007bff; /* Button background turns blue on hover */
+            color: #ffffff; /* Text becomes white on hover */
+        }
+        
+        /* This is just to keep in line with the theme. */
+        .fb-header {
+            color: #007bff; /* Matches the button border color */
+        }
+
     </style>
 </head>
 
@@ -145,7 +171,7 @@
             <div class="category-section">
                 <h3 class="category-title">Paziente</h3>
                 <a href="#" class="custom-btn">Dettagli Paziente</a>
-                <a href="#" class="custom-btn">Visualizza Storico Medico Paziente</a>
+                <a href="#" class="custom-btn">Visualizza Storico Paziente</a>
                 <a href="#" class="custom-btn">Fatturazione e Pagamenti Paziente</a>
                 <a href="#" class="custom-btn">Visualizza Appuntamenti</a>
             </div>
@@ -154,7 +180,7 @@
             <div class="category-section">
                 <h3 class="category-title">Medico</h3>
                 <a href="#" class="custom-btn">Dettagli Medico</a>
-                <a href="#" class="custom-btn">Gestisci Disponibilità/Tempo Libero</a>
+                <a href="#" class="custom-btn">Gestisci Disponibilita/Tempo Libero</a>
                 <a href="#" class="custom-btn">Visualizza Pazienti Assegnati</a>
                 <a href="#" class="custom-btn">Note di Consultazione e Prescrizioni</a>
                 <a href="#" class="custom-btn">Fatturazione e Pagamenti Medico </a>
@@ -165,7 +191,7 @@
                 <h3 class="category-title">Azienda</h3>
                 <a href="#" class="custom-btn">Dettagli Azienda</a>
                 <a href="#" class="custom-btn">Calendario</a>
-                <a href="#" class="custom-btn">Visualizza Azienda Affiliati</a>
+                <a href="#" class="custom-btn">Visualizza Affiliati Azienda</a>
                 <a href="#" class="custom-btn">Gestisci Contratti e Accordi</a>
                 <a href="#" class="custom-btn">Fatturazione e Pagamenti Azienda</a>
             </div>
@@ -175,8 +201,8 @@
                 <h3 class="category-title">Laboratorio</h3>
                 <a href="#" class="custom-btn">Dettagli Laboratorio</a>
                 <a href="#" class="custom-btn">Calendario</a>
-                <a href="#" class="custom-btn">Gestisci Risultati e Rapporti delle analisi</a>
-                <a href="#" class="custom-btn">Laboratorio Assegnati</a>
+                <a href="#" class="custom-btn">Gestisci Contratti e Accordi</a>
+                <a href="#" class="custom-btn">Gestisci Pazienti Assegnati</a>
                 <a href="#" class="custom-btn">Fatturazione e Pagamenti da/verso Laboratorio</a>
             </div>
         </div>
@@ -253,7 +279,7 @@
             </div>
 
             <!-- Storico Medico Table for Paziente -->
-            <div id="Paziente-Visualizza-Storico-Medico-Paziente" class="option-details">
+            <div id="Paziente-Visualizza-Storico-Paziente" class="option-details">
                 <h4>Visualizza Storico Medico Paziente</h4>
                 
                 <!-- Search bar for patient's name -->
@@ -268,6 +294,7 @@
                             <th>Data</th>
                             <th>Descrizione</th>
                             <th>Medico</th>
+                            <th>Resultato</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -275,6 +302,11 @@
                             <td>dd-mm-yyyy</td>
                             <td>Descrizione dell'evento medico</td>
                             <td>Nome del medico</td>
+                            <td>
+                                <!-- PDF File Indicator and Options -->
+                                <a href="path_to_result_pdf_file.pdf" target="_blank" title="Visualizza il risultato" class="btn btn-primary">View</a>
+                                <a href="path_to_result_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -307,11 +339,11 @@
                             <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
-                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
-                                <label for="ricevutaUpload001">Carica</label> |
-                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>  
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -418,30 +450,45 @@
                 </table>
             </div>
 
-            <!-- Gestisci Disponibilità/Tempo Libero Table -->
-            <div id="Medico-Gestisci-Disponibilità-Tempo-Libero" class="option-details">
-                <h4>Gestisci Disponibilità/Tempo Libero</h4>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Medico:</td>
-                            <td><input type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>Giorno:</td>
-                            <td><input type="date"></td>
-                        </tr>
-                        <tr>
-                            <td>Orario di inizio:</td>
-                            <td><input type="time"></td>
-                        </tr>
-                        <tr>
-                            <td>Orario di fine:</td>
-                            <td><input type="time"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="btn btn-primary">Submit</button>
+           <!-- Manage Availability/Free Time Section -->
+            <div id="Medico-Gestisci-Disponibilita-Tempo-Libero" class="option-details">
+                <h4>Gestisci Disponibilità/Tempo Libero</h4>            
+                <div class="availability-section">
+                    <!-- Patient Name Input -->
+                    <h6>Paziente:</h6>
+                    <input type="text" id="paziente" placeholder="Nome del paziente">
+
+                    <!-- Doctor Name Input -->
+                    <h6>Medico:</h6>
+                    <input type="text" id="doctor" placeholder="Nome del Medico">
+
+                    <!-- Service Type Textarea -->
+                    <h6>Tipo di servizio:</h6>
+                    <textarea id="serviceType" rows="10" placeholder="Inserisci il tipo di servizio" style="width: 100%;"></textarea>
+
+                    <!-- PDF Result Upload -->
+                    <h6>Carica risultato in PDF:</h6>
+                    <input type="file" id="pdfResult" accept=".pdf">
+                    <button class="btn btn-primary">Carica</button>
+                    <br><br>
+
+                    <!-- Date Picker -->
+                    <h6>Giorno:</h6>
+                    <input type="date" id="giorno">
+
+                    <!-- Start Time Dropdown -->
+                    <h6>Orario di inizio:</h6>
+                    <input type="time" id="inizio">
+
+                    <!-- End Time Dropdown -->
+                    <h6>Orario di fine:</h6>
+                    <input type="time" id="fine">
+
+                    <br><br>
+
+                    <!-- Submit Button -->
+                    <button class="btn btn-primary">Conferma</button>
+                </div>
             </div>
 
             <!-- Pazienti Assegnati Table -->
@@ -452,8 +499,9 @@
                         <tr>
                             <th>Nome Medico</th>
                             <th>Nome Paziente</th>
-                            <th>Data di Nascita</th>
-                            <th>Ultima Visita</th>
+                            <th>Codice Fiscale del Paziente</th>
+                            <th>Tipo di Consultazione</th>
+                            <th>Data</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -462,28 +510,31 @@
                 </table>
             </div>
 
-           <!-- Note di Consultazione e Prescrizioni Table -->
+            <!-- Note di Consultazione e Prescrizioni Table -->
             <div id="Medico-Note-di-Consultazione-e-Prescrizioni" class="option-details">
-                <h4>Note di Consultazione e Prescrizioni</h4>
+                <h4>Visualizza Pazienti Assegnati</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Data</th>
-                            <th>Nome Paziente</th>
                             <th>Nome Medico</th>
-                            <th>Nota</th>
+                            <th>Nome Paziente</th>
+                            <th>Codice Fiscale del Paziente</th>
+                            <th>Tipo di Consultazione</th>
+                            <th>Resultati</th>
                         </tr>
-                    </thead>
+                    </thead>                    
                     <tbody>
                         <tr>
                             <td>dd-mm-yyyy</td>
                             <td>Nome del paziente</td>
+                            <td>AAABBB12C34D567E</td>
                             <td>Nome del medico</td>
                             <td>
-                                📄 <!-- PDF icon placeholder -->
-                                <!-- Button to download the PDF -->
-                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Caricare</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td> 
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -517,11 +568,11 @@
                             <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
-                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
-                                <label for="ricevutaUpload001">Carica</label> |
-                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>   
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -604,35 +655,29 @@
                 <h5>Prenota una visita</h5>
                 
                 <div class="booking-section">
-                    <!-- Service Type Dropdown -->
+                    <!-- Company Name Input -->
+                    <h6>Azienda:</h6>
+                    <input type="text" id="azienda" placeholder="Nome del Azienda">
+
+                    <!-- Service Type Textarea -->
                     <h6>Tipo di servizio:</h6>
-                    <select name="serviceType" id="serviceType">
-                        <option value="consultation">Consultazione con il medico</option>
-                        <option value="bloodTest">Esame del sangue</option>
-                        <option value="urinalysis">Analisi delle urine</option>
-                        <option value="xray">Radiografia (X-ray)</option>
-                        <option value="ultrasound">Ecografia</option>
-                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
-                        <option value="spirometry">Spirometria</option>
-                        <option value="boneDensity">Test di densità ossea</option>
-                        <option value="colonoscopy">Colonscopia</option>
-                        <option value="gastroscopy">Gastroscopia</option>
-                        <option value="allergyTest">Test allergologico</option>
-                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
-                        <option value="mammography">Mammografia</option>
-                        <!-- Add more types as needed -->
-                    </select>
-                    
+                    <textarea id="serviceType" rows="10" placeholder="Inserisci il tipo di servizio" style="width: 100%;"></textarea>
+
+                    <!-- PDF Result Upload -->
+                    <h6>Carica risultato in PDF:</h6>
+                    <input type="file" id="pdfResult" accept=".pdf">
+                    <button class="btn btn-primary">Carica</button>
+
+                    <br><br>
+
                     <!-- Date Picker -->
-                    <h6>Data:</h6>
-                    <input type="date" id="datePicker">
+                    <h6>Giorno:</h6>
+                    <input type="date" id="giorno">
 
-                    <!-- Time Dropdown -->
-                    <h6>Orario:</h6>
-                    <input type="time" id="timePicker">
+                    <br><br>
 
-                    <!-- Book Button -->
-                    <button class="btn btn-primary">Prenota</button>
+                    <!-- Submit Button -->
+                    <button class="btn btn-primary">Conferma</button>
                 </div>
                 
                 <!-- You can add an actual calendar display below if needed -->
@@ -642,9 +687,7 @@
                         <tr>
                             <th>Tipo di servizio</th>
                             <th>Data</th>
-                            <th>Orario</th>
                             <th>Nome Azienda</th>
-                            <th>Nome Medico</th>
                             <th>Azioni</th>  <!-- for any actions like delete or edit -->
                         </tr>
                     </thead>
@@ -653,12 +696,10 @@
                         <tr>
                             <td>Esame del sangue</td>
                             <td>2023-09-10</td>
-                            <td>10:00</td>
                             <td>Sant Andrea</td>
-                            <td>Dr. Anita</td>
                             <td>
-                                <button class="btn btn-edit">Modifica</button>
-                                <button class="btn btn-delete">Elimina</button>
+                                <button class="btn btn-primary">Modifica</button>
+                                <button class="btn btn-primary">Elimina</button>
                             </td>
                         </tr>
                         <!-- Add more rows based on bookings -->
@@ -666,9 +707,8 @@
                 </table>
             </div>
 
-
             <!-- Visualizza Pazienti Affiliati Table -->
-            <div id="Azienda-Visualizza-Azienda-Affiliati" class="option-details">
+            <div id="Azienda-Visualizza-Affiliati-Azienda" class="option-details">
                 <h4>Visualizza Azienda Affiliati</h4>
                 <table class="table">
                     <thead>
@@ -696,16 +736,16 @@
                             <td>0123456789</td>
                             <td>mario.rossi@example.com</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" download>
-                                    <img src="pdf_icon.png" alt="Download PDF" title="Scarica il documento PDF">
-                                </a>
-                            </td>                            
-                        </tr>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>                           
+                            </td>
+                            </tr>
                         <!-- More rows will be added here dynamically as you retrieve data from the database -->
                     </tbody>
                 </table>
             </div>
-
 
             <!-- Gestisci Contratti e Accordi Table -->
             <div id="Azienda-Gestisci-Contratti-e-Accordi" class="option-details">
@@ -730,9 +770,8 @@
                         <tr>
                             <td>Sant Andrea</td>
                             <td>
-                                <a href="path_to_contract.pdf" download>
-                                    <img src="pdf_icon.png" alt="Download Contract" title="Scarica il contratto">
-                                </a>
+                                <button class="btn btn-primary">Upload</button>
+                                <button class="btn btn-primary">Download</button>
                             </td>                            
                         </tr>
                         <!-- More rows will be added here dynamically as you retrieve data from the database -->
@@ -766,11 +805,11 @@
                             <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
-                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
-                                <label for="ricevutaUpload001">Carica</label> |
-                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>   
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -917,7 +956,7 @@
 
 
             <!-- Gestisci Risultati e Rapporti delle analisi Tabella -->
-            <div id="Laboratorio-Gestisci-Risultati-e-Rapporti-delle-analisi" class="option-details">
+            <div id="Laboratorio-Gestisci-Contratti-e-Accordi" class="option-details">
                 <h4>Gestisci Risultati e Rapporti delle Analisi</h4>
                 <!-- Search bar for supplier/partner name -->
                 <div class="search-container">
@@ -948,36 +987,42 @@
             </div>
 
             <!-- Assegnati Laboratorio Table -->
-            <div id="Laboratorio-Laboratorio-Assegnati" class="option-details">
+            <div id="Laboratorio-Gestisci-Pazienti-Assegnati" class="option-details">
                 <h4>Laboratori Assegnati</h4>
 
-                <!-- Search Container -->
-                <div class="search-container">
-                    <!-- Search bar for laboratory name -->
-                    <input type="text" id="searchLab" placeholder="Cerca per nome del laboratorio...">
-                    <button class="btn btn-primary">Cerca</button>
-                </div>
-
-                <!-- Laboratory Table -->
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Nome Laboratorio</th>
-                            <th>Ubicazione</th>
-                            <th>Contatto</th>
-                            <th>Dettagli</th> 
-                            <!-- Additional columns as needed -->
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale/P.IVA</th>
+                            <th>Cod. univoco/SDI</th>
+                            <th>Indirizzo di fatturazione</th>
+                            <th>Cellulare</th>
+                            <th>Indirizzo email</th>
+                            <th>Documento (PDF)</th> <!-- Column to view & download the PDF -->
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Example Row -->
                         <tr>
-                            <td>ABC Laboratorio</td>
+                            <td>Sant Andrea</td>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
                             <td>Via Roma, 10</td>
                             <td>0123456789</td>
-                            <td>Dettagli Specifici</td>
-                        </tr>
-                        <!-- Additional rows will be populated dynamically from the database -->
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>                           
+                            </td>
+                            </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
                     </tbody>
                 </table>
             </div>
@@ -1053,5 +1098,4 @@
     </script>
 
 </body>
-
 
