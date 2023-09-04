@@ -239,7 +239,7 @@
                 </table>
             </div>
 
-            <!-- Manage Availability/Free Time Section -->
+           <!-- Manage Availability/Free Time Section -->
             <div id="Medico-Gestisci-Disponibilita-Tempo-Libero" class="option-details">
                 <h4 data-lang-it="Gestisci Disponibilità/Tempo Libero" data-lang-eng="Manage Availability/Free Time">Gestisci Disponibilità/Tempo Libero</h4>            
                 <div class="availability-section">
@@ -250,6 +250,12 @@
                     <!-- Service Type Textarea -->
                     <h6 data-lang-it="Tipo di servizio:" data-lang-eng="Service Type:">Tipo di servizio:</h6>
                     <textarea id="serviceType" rows="10" placeholder="Inserisci il tipo di servizio" style="width: 100%;"></textarea>
+
+                    <!-- PDF Result Upload -->
+                    <h6 data-lang-it="Carica risultato in PDF:" data-lang-eng="Upload result in PDF:">Carica risultato in PDF:</h6>
+                    <input type="file" id="pdfResult" accept=".pdf">
+                    <button class="btn btn-primary" data-lang-it="Carica" data-lang-eng="Upload">Carica</button>
+                    <br><br>
 
                     <!-- Date Picker -->
                     <h6 data-lang-it="Giorno:" data-lang-eng="Day:">Giorno:</h6>
@@ -269,6 +275,7 @@
                     <button class="btn btn-primary" data-lang-it="Conferma" data-lang-eng="Confirm">Conferma</button>
                 </div>
             </div>
+
 
             <!-- Pazienti Assegnati Table -->
             <div id="Medico-Visualizza-Pazienti-Assegnati" class="option-details">
@@ -299,7 +306,7 @@
                             <th data-lang-it="Nome Paziente" data-lang-eng="Patient Name">Nome Paziente</th>
                             <th data-lang-it="Codice Fiscale del Paziente" data-lang-eng="Patient's Fiscal Code">Codice Fiscale del Paziente</th>
                             <th data-lang-it="Tipo di Consultazione" data-lang-eng="Consultation Type">Tipo di Consultazione</th>
-                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
+                            <th data-lang-it="Data" data-lang-eng="Result">Resultati</th>
                         </tr>
                     </thead>                    <tbody>
                         <tr>
@@ -308,9 +315,11 @@
                             <td>AAABBB12C34D567E</td>
                             <td>Nome del medico</td>
                             <td>
-                                📄 <!-- PDF icon placeholder -->
-                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td> 
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
