@@ -123,48 +123,94 @@
             background-color: #1565c0;
         }
 
+        .lang-toggle-wrapper {
+            display: flex;
+            justify-content: flex-end; /* Aligns button to the right side of the container */
+            padding: 10px;
+        }
+        
+        .lang-toggle-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff; /* A typical medical blue */
+            border-radius: 15px;
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-toggle-btn:hover {
+            background-color: #007bff; /* Button background turns blue on hover */
+            color: #ffffff; /* Text becomes white on hover */
+        }
+        
+        /* This is just to keep in line with the theme. */
+        .fb-header {
+            color: #007bff; /* Matches the button border color */
+        }
+
     </style>
 </head>
 
 <body>
-
     <div class="container mt-4">
-        <h1 class="text-center fb-header fb-floating">Sistema di Gestione Clinica</h1>
-        <h2 class="text-center fb-header fb-floating">Laboratorio Analisi Sant'Andrea</h2>
-        <h3 class="text-center fb-header fb-floating">Largo Ignazio Ciaia, 19, 70125 Bari BA</h3>
+        <h1 class="text-center fb-header fb-floating" 
+            data-lang-it="Sistema di Gestione Clinica" 
+            data-lang-eng="Clinical Management System">
+            Sistema di Gestione Clinica
+        </h1>
+        <h2 class="text-center fb-header fb-floating" 
+            data-lang-it="Laboratorio Analisi Sant'Andrea" 
+            data-lang-eng="Saint Andrea Analysis Laboratory">
+            Laboratorio Analisi Sant'Andrea
+        </h2>
+        <h3 class="text-center fb-header fb-floating" 
+            data-lang-it="Largo Ignazio Ciaia, 19, 70125 Bari BA" 
+            data-lang-eng="Largo Ignazio Ciaia, 19, 70125 Bari BA">
+            Largo Ignazio Ciaia, 19, 70125 Bari BA
+        </h3>
     </div>
-
+    
     <div class="container mt-4">
-
+        <button id="langToggle" data-current-lang="IT" class="lang-toggle-btn">ENG</button>
         <!-- Categories Grid Container -->
         <div class="grid-container">
-    
             <!-- Paziente (Patient) Options -->
             <div class="category-section">
-                <h3 class="category-title">Paziente</h3>
-                <a href="#" class="custom-btn">Dettagli Paziente</a>
-                <a href="#" class="custom-btn">Visualizza Storico Medico Paziente</a>
-                <a href="#" class="custom-btn">Fatturazione e Pagamenti Paziente</a>
-                <a href="#" class="custom-btn">Visualizza Appuntamenti</a>
+                <h3 class="category-title" 
+                    data-lang-it="Paziente" 
+                    data-lang-eng="Patient">Paziente</h3>
+                <a href="#" class="custom-btn" 
+                   data-lang-it="Dettagli Paziente" 
+                   data-lang-eng="Patient Details">Dettagli Paziente</a>
+                <a href="#" class="custom-btn" 
+                   data-lang-it="Visualizza Storico Medico Paziente" 
+                   data-lang-eng="View Patient Medical History">Visualizza Storico Medico Paziente</a>
+                <a href="#" class="custom-btn" 
+                   data-lang-it="Fatturazione e Pagamenti Paziente" 
+                   data-lang-eng="Patient Billing and Payments">Fatturazione e Pagamenti Paziente</a>
+                <a href="#" class="custom-btn" 
+                   data-lang-it="Visualizza Appuntamenti" 
+                   data-lang-eng="View Appointments">Visualizza Appuntamenti</a>
             </div>
         </div>
-
+    
         <!-- Tables Container -->
         <div class="tables-container">
             <!-- Paziente Database Table -->
             <div id="Paziente-Dettagli-Paziente" class="option-details">
-                <h4>Dettagli del Paziente</h4>
+                <h4 data-lang-it="Dettagli del Paziente" data-lang-eng="Patient Details">Dettagli del Paziente</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Codice Fiscale/P.IVA</th>
-                            <th>Cod. univoco/SDI</th>
-                            <th>Indirizzo di fatturazione</th>
-                            <th>Cellulare</th>
-                            <th>Indirizzo email</th>
-                            <th>Azioni</th> <!-- Column for actions like edit, delete etc. -->
+                            <th data-lang-it="Nome" data-lang-eng="Name">Nome</th>
+                            <th data-lang-it="Cognome" data-lang-eng="Surname">Cognome</th>
+                            <th data-lang-it="Codice Fiscale/P.IVA" data-lang-eng="Fiscal Code/VAT">Codice Fiscale/P.IVA</th>
+                            <th data-lang-it="Cod. univoco/SDI" data-lang-eng="Unique Code/SDI">Cod. univoco/SDI</th>
+                            <th data-lang-it="Indirizzo di fatturazione" data-lang-eng="Billing Address">Indirizzo di fatturazione</th>
+                            <th data-lang-it="Cellulare" data-lang-eng="Mobile">Cellulare</th>
+                            <th data-lang-it="Indirizzo email" data-lang-eng="Email Address">Indirizzo email</th>
+                            <th data-lang-it="Azioni" data-lang-eng="Actions">Azioni</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -178,7 +224,9 @@
                             <td>0123456789</td>
                             <td>mario.rossi@example.com</td>
                             <td>
-                                <button class="btn btn-small btn-edit">📝 Modifica</button>
+                                <button class="btn btn-small btn-edit" 
+                                data-lang-it="📝 Modifica" 
+                                data-lang-eng="📝 Edit">📝 Modifica</button>
                             </td>                            
                         </tr>
                         <!-- More rows will be added here dynamically as you retrieve data from the database -->
@@ -188,12 +236,13 @@
 
             <!-- Storico Medico Table for Paziente -->
             <div id="Paziente-Visualizza-Storico-Medico-Paziente" class="option-details">
-                <h4>Visualizza Storico Medico Paziente</h4>
+                <h4 data-lang-it="Visualizza Storico Medico Paziente" 
+                    data-lang-eng="View Patient Medical History">Visualizza Storico Medico Paziente</h4>
                 
-                <!-- Search bar for patient's name -->
+                <!-- Search bar for date -->
                 <div class="search-container">
-                    <input type="date" placeholder="Cercare la data...">
-                    <button class="btn btn-primary">Cerca</button>
+                    <input type="date" placeholder="Cercare la data..." data-lang-it="Cercare la data..." data-lang-eng="Search for date...">
+                    <button class="btn btn-primary" data-lang-it="Cerca" data-lang-eng="Search">Cerca</button>
                 </div>
                 
                 <br><br>
@@ -201,10 +250,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Codice Fiscale</th>
-                            <th>Data</th>
-                            <th>Descrizione</th>
-                            <th>Medico</th>
+                            <th data-lang-it="Codice Fiscale" data-lang-eng="Fiscal Code">Codice Fiscale</th>
+                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
+                            <th data-lang-it="Descrizione" data-lang-eng="Description">Descrizione</th>
+                            <th data-lang-it="Risultato" data-lang-eng="Result">Risultato</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -212,7 +261,12 @@
                             <td>CF1234567890</td>
                             <td>mm-dd-yyyy</td>
                             <td>Descrizione dell'evento medico</td>
-                            <td>Nome del medico</td>
+                            <td>
+                                <!-- PDF File Indicator and Options -->
+                                <img src="pdf_icon.png" alt="PDF available" title="PDF available">
+                                <a href="path_to_result_pdf_file.pdf" target="_blank" title="Visualizza il risultato" class="btn btn-primary">View</a>
+                                <a href="path_to_result_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -221,11 +275,15 @@
 
             <!-- Fatturazione Pagamenti Table -->
             <div id="Paziente-Fatturazione-e-Pagamenti-Paziente" class="option-details">
-                <h4>Fatturazione e Pagamenti Paziente</h4>
+                <h4 data-lang-it="Fatturazione e Pagamenti Paziente" 
+                    data-lang-eng="Patient Billing and Payments">Fatturazione e Pagamenti Paziente</h4>
+
                 <!-- Search bar for patient's invoice -->
                 <div class="search-container">
-                    <input type="text" placeholder="Cerca il numero della fattura del paziente...">
-                    <button class="btn btn-primary">Cerca</button>
+                    <input type="text" placeholder="Cerca il numero della fattura del paziente..."
+                           data-lang-it="Cerca il numero della fattura del paziente..." 
+                           data-lang-eng="Search for patient's invoice number...">
+                    <button class="btn btn-primary" data-lang-it="Cerca" data-lang-eng="Search">Cerca</button>
                 </div>
                 
                 <br><br>
@@ -233,11 +291,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Numero Fattura</th>
-                            <th>Data</th>
-                            <th>Stato del Pagamento</th>
-                            <th>Ricevuta</th>
-                        </tr>
+                        <th data-lang-it="Numero Fattura" data-lang-eng="Invoice Number">Numero Fattura</th>
+                        <th data-lang-it="Data" data-lang-eng="Date">Data</th>
+                        <th data-lang-it="Stato del Pagamento" data-lang-eng="Payment Status">Stato del Pagamento</th>
+                        <th data-lang-it="Ricevuta" data-lang-eng="Receipt">Ricevuta</th>
+                    </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -245,11 +303,11 @@
                             <td>mm-dd-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
-                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
-                                <label for="ricevutaUpload001">Carica</label> |
-                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>                            
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -258,11 +316,14 @@
 
             <!-- Visualizza Appuntamenti Table -->
             <div id="Paziente-Visualizza-Appuntamenti" class="option-details">
-                <h4>Visualizza Appuntamenti</h4>
+                <h4 data-lang-it="Visualizza Appuntamenti" 
+                    data-lang-eng="View Appointments">Visualizza Appuntamenti</h4>
                 <!-- Search bar for patient's name -->
                 <div class="search-container">
-                    <input type="date" placeholder="Cercare la data...">
-                    <button class="btn btn-primary">Cerca</button>
+                    <input type="date" placeholder="Cercare la data..." 
+                           data-lang-it="Cercare la data..." 
+                           data-lang-eng="Search for date...">
+                    <button class="btn btn-primary" data-lang-it="Cerca" data-lang-eng="Search">Cerca</button>
                 </div>
 
                 <br><br>
@@ -270,19 +331,15 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Data</th>
-                            <th>Ora</th>
-                            <th>Medico</th>
-                            <th>Paziente</th>
-                            <th>Descrizione</th>
+                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
+                            <th data-lang-it="Ora" data-lang-eng="Time">Ora</th>
+                            <th data-lang-it="Descrizione" data-lang-eng="Description">Descrizione</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>mm-dd-yyyy</td>
                             <td>HH:MM</td>
-                            <td>Nome del medico</td>
-                            <td>Nome del paziente</td>
                             <td>Descrizione dell'appuntamento</td>
                         </tr>
                         <!-- Add more rows as needed -->
@@ -303,20 +360,42 @@
     <script>
         $(document).ready(function () {
             $('.custom-btn').on('click', function (e) {
-                e.preventDefault(); 
-                
-                const category = $(this).closest('.category-section').find('.category-title').text().trim();
-                let buttonName = $(this).text().trim();
-                buttonName = buttonName.replace(/ /g, '-');
-                buttonName = buttonName.replace(/\//g, '-'); // Replacing "/" with "-"
-                
-                const combinedID = category + '-' + buttonName;
-                
-                $('.option-details').hide(); 
+                e.preventDefault();
+        
+                const category = $(this).closest('.category-section').find('.category-title').data('lang-it').replace(/ /g, '-');
+                const option = $(this).data('lang-it').replace(/ /g, '-');
+                const combinedID = category + '-' + option;
+        
+                $('.option-details').hide();
                 $('#' + combinedID).show();
-
-            });        
-        });        
+            });
+        
+            $('#langToggle').on('click', function() {
+                const currentLang = $(this).attr('data-current-lang');
+                let newLang, buttonLabel;
+        
+                if (currentLang === "IT") {
+                    newLang = "ENG";
+                    buttonLabel = "IT";
+                } else {
+                    newLang = "IT";
+                    buttonLabel = "ENG";
+                }
+                
+                $(this).attr('data-current-lang', newLang).text(buttonLabel);
+        
+                $('[data-lang-it]').each(function() {
+                    const itText = $(this).attr('data-lang-it');
+                    const engText = $(this).attr('data-lang-eng');
+        
+                    if (newLang === "IT") {
+                        $(this).text(itText);
+                    } else {
+                        $(this).text(engText);
+                    }
+                });
+            });
+        });                
     </script>
 
 </body>
