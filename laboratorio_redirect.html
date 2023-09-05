@@ -123,49 +123,88 @@
             background-color: #1565c0;
         }
 
+        .lang-toggle-wrapper {
+            display: flex;
+            justify-content: flex-end; /* Aligns button to the right side of the container */
+            padding: 10px;
+        }
+        
+        .lang-toggle-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff; /* A typical medical blue */
+            border-radius: 15px;
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-toggle-btn:hover {
+            background-color: #007bff; /* Button background turns blue on hover */
+            color: #ffffff; /* Text becomes white on hover */
+        }
+        
+        /* This is just to keep in line with the theme. */
+        .fb-header {
+            color: #007bff; /* Matches the button border color */
+        }
+
     </style>
 </head>
 
 <body>
 
     <div class="container mt-4">
-        <h1 class="text-center fb-header fb-floating">Sistema di Gestione Clinica</h1>
-        <h2 class="text-center fb-header fb-floating">Laboratorio Analisi Sant'Andrea</h2>
-        <h3 class="text-center fb-header fb-floating">Largo Ignazio Ciaia, 19, 70125 Bari BA</h3>
+        <h1 class="text-center fb-header fb-floating" 
+            data-lang-it="Sistema di Gestione Clinica" 
+            data-lang-eng="Clinical Management System">
+            Sistema di Gestione Clinica
+        </h1>
+        <h2 class="text-center fb-header fb-floating" 
+            data-lang-it="Laboratorio Analisi Sant'Andrea" 
+            data-lang-eng="Saint Andrea Analysis Laboratory">
+            Laboratorio Analisi Sant'Andrea
+        </h2>
+        <h3 class="text-center fb-header fb-floating" 
+            data-lang-it="Largo Ignazio Ciaia, 19, 70125 Bari BA" 
+            data-lang-eng="Largo Ignazio Ciaia, 19, 70125 Bari BA">
+            Largo Ignazio Ciaia, 19, 70125 Bari BA
+        </h3>
     </div>
 
     <div class="container mt-4">
-
+        <button id="langToggle" data-current-lang="IT" class="lang-toggle-btn">ENG</button>
         <!-- Categories Grid Container -->
         <div class="grid-container">
     
-            <!-- Laboratorio (Lab) Options -->
+            <!-- Laboratory (Lab) Options -->
             <div class="category-section">
-                <h3 class="category-title">Laboratorio</h3>
-                <a href="#" class="custom-btn">Dettagli Laboratorio</a>
-                <a href="#" class="custom-btn">Calendario</a>
-                <a href="#" class="custom-btn">Gestisci Risultati e Rapporti delle analisi</a>
-                <a href="#" class="custom-btn">Laboratorio Assegnati</a>
-                <a href="#" class="custom-btn">Fatturazione e Pagamenti da/verso Laboratorio</a>
+                <h3 class="category-title" data-lang-it="Laboratorio" data-lang-eng="Laboratory">Laboratorio</h3>
+                <a href="#" class="custom-btn" data-lang-it="Dettagli Laboratorio" data-lang-eng="Laboratory Details">Dettagli Laboratorio</a>
+                <a href="#" class="custom-btn" data-lang-it="Calendario" data-lang-eng="Calendar">Calendario</a>
+                <a href="#" class="custom-btn" data-lang-it="Gestisci Contratti e Accordi" data-lang-eng="Manage Contracts and Agreements">Gestisci Contratti e Accordi</a>
+                <a href="#" class="custom-btn" data-lang-it="Gestisci Pazienti Assegnati" data-lang-eng="Manage Assigned Patients">Gestisci Pazienti Assegnati</a>
+                <a href="#" class="custom-btn" data-lang-it="Fatturazione e Pagamenti Laboratorio" data-lang-eng="Billing and Payments to/from Laboratory">Fatturazione e Pagamenti da/verso Laboratorio</a>
             </div>
+
         </div>
 
         <!-- Tables Container -->
         <div class="tables-container">
             <!-- Dettagli Laboratorio Tabella -->
             <div id="Laboratorio-Dettagli-Laboratorio" class="option-details">
-                <h4>Dettagli Laboratorio</h4>
+                <h4 data-lang-it="Dettagli Laboratorio" data-lang-eng="Laboratory Details">Dettagli Laboratorio</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Codice Fiscale/P.IVA</th>
-                            <th>Cod. univoco/SDI</th>
-                            <th>Indirizzo di fatturazione</th>
-                            <th>Cellulare</th>
-                            <th>Indirizzo email</th>
-                            <th>Azioni</th> <!-- Column for actions like edit, delete etc. -->
+                            <th data-lang-it="Nome" data-lang-eng="First Name">Nome</th>
+                            <th data-lang-it="Cognome" data-lang-eng="Last Name">Cognome</th>
+                            <th data-lang-it="Codice Fiscale/P.IVA" data-lang-eng="Tax Code/VAT No">Codice Fiscale/P.IVA</th>
+                            <th data-lang-it="Cod. univoco/SDI" data-lang-eng="Unique Code/SDI">Cod. univoco/SDI</th>
+                            <th data-lang-it="Indirizzo di fatturazione" data-lang-eng="Billing Address">Indirizzo di fatturazione</th>
+                            <th data-lang-it="Cellulare" data-lang-eng="Mobile">Cellulare</th>
+                            <th data-lang-it="Indirizzo email" data-lang-eng="Email Address">Indirizzo email</th>
+                            <th data-lang-it="Azioni" data-lang-eng="Actions">Azioni</th> <!-- Column for actions like edit, delete etc. -->
                         </tr>
                     </thead>
                     <tbody>
@@ -179,7 +218,7 @@
                             <td>0123456789</td>
                             <td>mario.rossi@example.com</td>
                             <td>
-                                <button class="btn btn-small btn-edit">📝 Modifica</button>
+                                <button class="btn btn-small btn-edit" data-lang-it="📝 Modifica" data-lang-eng="📝 Edit">📝 Modifica</button>
                             </td>                            
                         </tr>
                         <!-- More rows will be added here dynamically as you retrieve data from the database -->
@@ -189,52 +228,35 @@
             
             <!-- Calendario Table -->
             <div id="Laboratorio-Calendario" class="option-details">
-                <h4>Calendario Laboratorio</h4>
+                <h4 data-lang-it="Calendario" data-lang-eng="Calendar">Calendario</h4>
                 
-                <h5>Prenota un esame</h5>
-                
+                <h5 data-lang-it="Prenota un esame" data-lang-eng="Book an Appointment">Prenota un esame</h5>
+                            
                 <div class="booking-section">
-                    <!-- Test Type Dropdown -->
-                    <h6>Tipo di esame:</h6>
-                    <select name="testType" id="testType">
-                        <option value="bloodTest">Esame del sangue</option>
-                        <option value="urinalysis">Analisi delle urine</option>
-                        <option value="xray">Radiografia (X-ray)</option>
-                        <option value="ultrasound">Ecografia</option>
-                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
-                        <option value="spirometry">Spirometria</option>
-                        <option value="boneDensity">Test di densità ossea</option>
-                        <option value="colonoscopy">Colonscopia</option>
-                        <option value="gastroscopy">Gastroscopia</option>
-                        <option value="allergyTest">Test allergologico</option>
-                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
-                        <option value="mammography">Mammografia</option>
-                        <!-- Add more tests as needed -->
-                    </select>
-                    
+                    <!-- Service Type Dropdown -->
+                    <h6 data-lang-it="Tipo di servizio:" data-lang-eng="Service Type:">Tipo di servizio:</h6>
+                    <textarea id="serviceType" rows="10" placeholder="Inserisci il tipo di servizio" style="width: 100%;"></textarea>
+                                
                     <!-- Date Picker -->
-                    <h6>Data:</h6>
-                    <input type="date" id="datePicker">
-
-                    <!-- Time Dropdown -->
-                    <h6>Orario:</h6>
-                    <input type="time" id="timePicker">
-
-                    <!-- Book Button -->
-                    <button class="btn btn-primary">Prenota</button>
+                    <h6 data-lang-it="Giorno:" data-lang-eng="Day:">Giorno:</h6>
+                    <input type="date" id="giorno">
+                    
+                    <br><br>
+            
+                    <!-- Submit Button -->
+                    <button class="btn btn-primary" data-lang-it="Conferma" data-lang-eng="Confirm">Conferma</button>
                 </div>
                 
-                <!-- Display of booked tests -->
-                <h5>Esami prenotati</h5>
+                <br><br>
+
+                <!-- You can add an actual calendar display below if needed -->
+                <h5 data-lang-it="Esami prenotati" data-lang-eng="Existing Bookings">Esami prenotati</h5>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Tipo di esame</th>
-                            <th>Data</th>
-                            <th>Orario</th>
-                            <th>Nome Laboratorio</th>
-                            <th>Nome Tecnico</th>
-                            <th>Azioni</th>  <!-- for any actions like delete or edit -->
+                            <th data-lang-it="Tipo di servizio" data-lang-eng="Service Type">Tipo di servizio</th>
+                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
+                            <th data-lang-it="Azioni" data-lang-eng="Actions">Azioni</th>  <!-- for any actions like delete or edit -->
                         </tr>
                     </thead>
                     <tbody>
@@ -242,12 +264,9 @@
                         <tr>
                             <td>Esame del sangue</td>
                             <td>2023-09-10</td>
-                            <td>10:00</td>
-                            <td>Laboratorio San Marco</td>
-                            <td>Tecnico Bianca</td>
                             <td>
-                                <button class="btn btn-edit">Modifica</button>
-                                <button class="btn btn-delete">Elimina</button>
+                                <button class="btn btn-primary" data-lang-it="Modifica" data-lang-eng="Edit">Modifica</button>
+                                <button class="btn btn-primary" data-lang-it="Elimina" data-lang-eng="Delete">Elimina</button>
                             </td>
                         </tr>
                         <!-- Add more rows based on bookings -->
@@ -257,75 +276,83 @@
 
 
             <!-- Gestisci Risultati e Rapporti delle analisi Tabella -->
-            <div id="Laboratorio-Gestisci-Risultati-e-Rapporti-delle-analisi" class="option-details">
-                <h4>Gestisci Risultati e Rapporti delle Analisi</h4>
+            <div id="Laboratorio-Gestisci-Contratti-e-Accordi" class="option-details">
+                <h4 data-lang-it="Gestisci Contratti e Accordi" data-lang-eng="Manage Contracts and Agreements">Gestisci Contratti e Accordi</h4>
+                
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome Laboratorio</th>
-                            <th>Risultato</th> <!-- Column to view & download the contract -->
+                            <th data-lang-it="Nome Laboratorio" data-lang-eng="Laboratory Name">Nome Laboratorio</th>
+                            <th data-lang-it="Contratto" data-lang-eng="Contract">Contratto</th> <!-- Column to view & download the contract -->
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Example Row -->
                         <tr>
-                            <td>ABC Forniture Mediche</td>
+                            <td>ABC</td>
                             <td>
-                                <a href="path_to_contract.pdf" download>
-                                    <img src="pdf_icon.png" alt="Download Contract" title="Scarica il contratto">
-                                </a>
-                            </td>                            
+                                <button class="btn btn-primary" data-lang-it="Upload" data-lang-eng="Upload">Upload</button>
+                                <button class="btn btn-primary" data-lang-it="Download" data-lang-eng="Download">Download</button>
+                            </td>                           
                         </tr>
                         <!-- More rows will be added here dynamically as you retrieve data from the database -->
                     </tbody>
                 </table>
             </div>
 
-            <!-- Assegnati Laboratorio Table -->
-            <div id="Laboratorio-Laboratorio-Assegnati" class="option-details">
-                <h4>Laboratori Assegnati</h4>
+            <!-- Assigned Laboratory Table -->
+            <div id="Laboratorio-Gestisci-Pazienti-Assegnati" class="option-details">
+                <h4 data-lang-it="Gestisci Pazienti Assegnati" data-lang-eng="Manage Assigned Patients">Gestisci Pazienti Assegnati</h4>
                 <!-- Laboratory Table -->
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome Laboratorio</th>
-                            <th>Ubicazione</th>
-                            <th>Contatto</th>
-                            <th>Dettagli</th> 
-                            <!-- Additional columns as needed -->
+                            <th data-lang-it="Nome Laboratorio" data-lang-eng="Laboratory Name">Nome Laboratorio</th>
+                            <th data-lang-it="Nome" data-lang-eng="First Name">Nome</th>
+                            <th data-lang-it="Cognome" data-lang-eng="Last Name">Cognome</th>
+                            <th data-lang-it="Codice Fiscale/P.IVA" data-lang-eng="Tax Code/VAT No.">Codice Fiscale/P.IVA</th>
+                            <th data-lang-it="Cod. univoco/SDI" data-lang-eng="Unique Code/SDI">Cod. univoco/SDI</th>
+                            <th data-lang-it="Indirizzo di fatturazione" data-lang-eng="Billing Address">Indirizzo di fatturazione</th>
+                            <th data-lang-it="Cellulare" data-lang-eng="Mobile">Cellulare</th>
+                            <th data-lang-it="Indirizzo email" data-lang-eng="Email Address">Indirizzo email</th>
+                            <th data-lang-it="Documento (PDF)" data-lang-eng="Document (PDF)">Documento (PDF)</th> <!-- Column to view & download the PDF -->
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Example Row -->
                         <tr>
-                            <td>ABC Laboratorio</td>
+                            <td>Sant Andrea</td>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
                             <td>Via Roma, 10</td>
                             <td>0123456789</td>
-                            <td>Dettagli Specifici</td>
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <button class="btn btn-primary" data-lang-it="Upload" data-lang-eng="Upload">Upload</button>
+                                <button class="btn btn-primary" data-lang-it="Download" data-lang-eng="Download">Download</button>
+                            </td>
                         </tr>
-                        <!-- Additional rows will be populated dynamically from the database -->
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
                     </tbody>
                 </table>
             </div>
 
-
-            <!-- Fatturazione e Pagamenti da/verso Laboratorio Tabella -->
-            <div id="Laboratorio-Fatturazione-e-Pagamenti-da-verso-Laboratorio" class="option-details">
-                <h4>Fatturazione e Pagamenti da/verso Laboratorio</h4>
+            <!-- Billing and Payments to/from Laboratory Table -->
+            <div id="Laboratorio-Fatturazione-e-Pagamenti-Laboratorio" class="option-details">
+                <h4 data-lang-it="Fatturazione e Pagamenti Laboratorio" data-lang-eng="Billing and Payments to/from Laboratory">Fatturazione e Pagamenti da/verso Laboratorio</h4>
                 <div class="search-container">
                     <input type="text" placeholder="Cerca il numero della fattura del Laboratorio...">
-                    <button class="btn btn-primary">Cerca</button>
+                    <button class="btn btn-primary" data-lang-it="Cerca" data-lang-eng="Search">Cerca</button>
                 </div>
-                
-                <br><br>
-
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Numero Fattura</th>
-                            <th>Data</th>
-                            <th>Stato del Pagamento</th>
-                            <th>Ricevuta</th>
+                            <th data-lang-it="Numero Fattura" data-lang-eng="Invoice Number">Numero Fattura</th>
+                            <th data-lang-it="Data" data-lang-eng="Date">Data</th>
+                            <th data-lang-it="Stato del Pagamento" data-lang-eng="Payment Status">Stato del Pagamento</th>
+                            <th data-lang-it="Ricevuta" data-lang-eng="Receipt">Ricevuta</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -334,11 +361,11 @@
                             <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
-                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
-                                <label for="ricevutaUpload001">Carica</label> |
-                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>    
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -356,20 +383,42 @@
     <script>
         $(document).ready(function () {
             $('.custom-btn').on('click', function (e) {
-                e.preventDefault(); 
-                
-                const category = $(this).closest('.category-section').find('.category-title').text().trim();
-                let buttonName = $(this).text().trim();
-                buttonName = buttonName.replace(/ /g, '-');
-                buttonName = buttonName.replace(/\//g, '-'); // Replacing "/" with "-"
-                
-                const combinedID = category + '-' + buttonName;
-                
-                $('.option-details').hide(); 
+                e.preventDefault();
+        
+                const category = $(this).closest('.category-section').find('.category-title').data('lang-it').replace(/ /g, '-');
+                const option = $(this).data('lang-it').replace(/ /g, '-');
+                const combinedID = category + '-' + option;
+        
+                $('.option-details').hide();
                 $('#' + combinedID).show();
-
-            });        
-        });        
+            });
+        
+            $('#langToggle').on('click', function() {
+                const currentLang = $(this).attr('data-current-lang');
+                let newLang, buttonLabel;
+        
+                if (currentLang === "IT") {
+                    newLang = "ENG";
+                    buttonLabel = "IT";
+                } else {
+                    newLang = "IT";
+                    buttonLabel = "ENG";
+                }
+                
+                $(this).attr('data-current-lang', newLang).text(buttonLabel);
+        
+                $('[data-lang-it]').each(function() {
+                    const itText = $(this).attr('data-lang-it');
+                    const engText = $(this).attr('data-lang-eng');
+        
+                    if (newLang === "IT") {
+                        $(this).text(itText);
+                    } else {
+                        $(this).text(engText);
+                    }
+                });
+            });
+        });                
     </script>
 
 </body>
