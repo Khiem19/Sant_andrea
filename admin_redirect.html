@@ -891,48 +891,41 @@
                 <h4>Calendario Laboratorio</h4>
                 
                 <h5>Prenota un esame</h5>
-                
+                               
                 <div class="booking-section">
-                    <!-- Test Type Dropdown -->
-                    <h6>Tipo di esame:</h6>
-                    <select name="testType" id="testType">
-                        <option value="bloodTest">Esame del sangue</option>
-                        <option value="urinalysis">Analisi delle urine</option>
-                        <option value="xray">Radiografia (X-ray)</option>
-                        <option value="ultrasound">Ecografia</option>
-                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
-                        <option value="spirometry">Spirometria</option>
-                        <option value="boneDensity">Test di densità ossea</option>
-                        <option value="colonoscopy">Colonscopia</option>
-                        <option value="gastroscopy">Gastroscopia</option>
-                        <option value="allergyTest">Test allergologico</option>
-                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
-                        <option value="mammography">Mammografia</option>
-                        <!-- Add more tests as needed -->
-                    </select>
-                    
+                    <!-- Company Name Input -->
+                    <h6>Laboratorio:</h6>
+                    <input type="text" id="laboratorio" placeholder="Nome del Laboratorio">
+
+                    <!-- Service Type Textarea -->
+                    <h6>Tipo di servizio:</h6>
+                    <textarea id="serviceType" rows="10" placeholder="Inserisci il tipo di servizio" style="width: 100%;"></textarea>
+
+                    <!-- PDF Result Upload -->
+                    <h6>Carica risultato in PDF:</h6>
+                    <input type="file" id="pdfResult" accept=".pdf">
+                    <button class="btn btn-primary">Carica</button>
+
+                    <br><br>
+
                     <!-- Date Picker -->
-                    <h6>Data:</h6>
-                    <input type="date" id="datePicker">
+                    <h6>Giorno:</h6>
+                    <input type="date" id="giorno">
 
-                    <!-- Time Dropdown -->
-                    <h6>Orario:</h6>
-                    <input type="time" id="timePicker">
+                    <br><br>
 
-                    <!-- Book Button -->
-                    <button class="btn btn-primary">Prenota</button>
+                    <!-- Submit Button -->
+                    <button class="btn btn-primary">Conferma</button>
                 </div>
                 
-                <!-- Display of booked tests -->
+                <!-- You can add an actual calendar display below if needed -->
                 <h5>Esami prenotati</h5>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Tipo di esame</th>
                             <th>Data</th>
-                            <th>Orario</th>
-                            <th>Nome Laboratorio</th>
-                            <th>Nome Tecnico</th>
+                            <th>Nome Laboratiorio</th>
                             <th>Azioni</th>  <!-- for any actions like delete or edit -->
                         </tr>
                     </thead>
@@ -941,12 +934,10 @@
                         <tr>
                             <td>Esame del sangue</td>
                             <td>2023-09-10</td>
-                            <td>10:00</td>
-                            <td>Laboratorio San Marco</td>
-                            <td>Tecnico Bianca</td>
+                            <td>ABCD</td>
                             <td>
-                                <button class="btn btn-edit">Modifica</button>
-                                <button class="btn btn-delete">Elimina</button>
+                                <button class="btn btn-primary">Modifica</button>
+                                <button class="btn btn-primary">Elimina</button>
                             </td>
                         </tr>
                         <!-- Add more rows based on bookings -->
@@ -957,12 +948,14 @@
 
             <!-- Gestisci Risultati e Rapporti delle analisi Tabella -->
             <div id="Laboratorio-Gestisci-Contratti-e-Accordi" class="option-details">
-                <h4>Gestisci Risultati e Rapporti delle Analisi</h4>
-                <!-- Search bar for supplier/partner name -->
+                <h4>Gestisci Contratti e Accordi</h4>
+
+                <!-- Search bar for company name -->
                 <div class="search-container">
-                    <input type="text" id="searchSupplier" placeholder="Cerca per nome del Laboratorio...">
+                    <input type="text" id="searchlaboratorio" placeholder="Cerca per nome dell'laboratorio...">
                     <button class="btn btn-primary">Cerca</button>
                 </div>
+
 
                 <table class="table">
                     <thead>
@@ -974,11 +967,10 @@
                     <tbody>
                         <!-- Example Row -->
                         <tr>
-                            <td>ABC Forniture Mediche</td>
+                            <td>Sant Andrea</td>
                             <td>
-                                <a href="path_to_contract.pdf" download>
-                                    <img src="pdf_icon.png" alt="Download Contract" title="Scarica il contratto">
-                                </a>
+                                <button class="btn btn-primary">Upload</button>
+                                <button class="btn btn-primary">Download</button>
                             </td>                            
                         </tr>
                         <!-- More rows will be added here dynamically as you retrieve data from the database -->
@@ -988,8 +980,7 @@
 
             <!-- Assegnati Laboratorio Table -->
             <div id="Laboratorio-Gestisci-Pazienti-Assegnati" class="option-details">
-                <h4>Laboratori Assegnati</h4>
-
+                <h4>Gestisci Pazienti Assegnati</h4>
                 <table class="table">
                     <thead>
                         <tr>
@@ -1053,11 +1044,11 @@
                             <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
                             <td>
-                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
-                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
-                                <label for="ricevutaUpload001">Carica</label> |
-                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
-                            </td>
+                                <a href="path_to_pdf_file.pdf" target="_blank" class="btn btn-primary">View</a>
+                                <label for="ricevutaUpload001" class="btn btn-primary">Upload</label>
+                                <input type="file" style="display: none;" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001"> 
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Download</a>
+                            </td>   
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
