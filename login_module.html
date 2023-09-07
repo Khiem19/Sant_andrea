@@ -1,0 +1,312 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paziente Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+       body {
+            background-image: url('https://mieka.co.uk/blurred-interior-hospital-clinical-with-people-abstract-medical-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        }
+
+        .category-section {
+            border: 2px solid #1877f2; /* Increased border width and blue color */
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px; /* Adding rounded corners */
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+        }
+
+        .custom-btn {
+            display: block;
+            padding: 10px 20px;
+            border: none;
+            background-color: #1877f2;
+            color: white;
+            text-align: left;
+            margin-bottom: 10px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .custom-btn:hover {
+            background-color: #165dbb;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-title {
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        <!-- .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        } -->
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; /* adjust spacing between grid items as needed */
+        }
+        
+        .tables-container .option-details {
+            width: 100%;
+            margin-top: 20px; /* Add some spacing between the tables. Adjust as needed. */
+        }        
+
+        .fb-header {
+            color: #1877f2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: text-shadow 0.3s;
+        }
+
+        .fb-header:hover {
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .fb-floating {
+            animation: floatAnimation 3s infinite;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .option-details {
+            display: none;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Hide default file input */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Style the label to look like a button */
+        label {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #1877f2;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        label:hover {
+            background-color: #1565c0;
+        }
+
+        .lang-toggle-wrapper {
+            display: flex;
+            justify-content: flex-end; /* Aligns button to the right side of the container */
+            padding: 10px;
+        }
+        
+        .lang-toggle-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff; /* A typical medical blue */
+            border-radius: 15px;
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-toggle-btn:hover {
+            background-color: #007bff; /* Button background turns blue on hover */
+            color: #ffffff; /* Text becomes white on hover */
+        }
+        
+        .compact-login-section {
+            padding: 20px;
+            border: 2px solid #1877f2;   /* This is the border color and width used for the Medico section */
+            border-radius: 10px;         /* Rounded corners, same as Medico */
+            background-color: rgba(255, 255, 255, 0.8);  /* Slightly transparent white background, same as Medico */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Adding a subtle shadow, same as Medico */
+            max-width: 450px;            /* Limit the width of the login section */
+            height: 500px;               /* Set a specific height */
+            display: flex;               /* Use flexbox to center contents */
+            flex-direction: column;      /* Stack children vertically */
+            justify-content: center;     /* Center children vertically */
+            align-items: center;         /* Center children horizontally */
+        }
+        
+        .compact-category-title {
+            font-size: 2rem;             /* Larger font size */
+            font-weight: bold;           /* Bolder font */
+            margin-bottom: 20px;         /* Increased margin for better spacing */
+        }
+
+        /* Styles for the role icon choices */
+        .role-icon-choice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .role-icon-choice:hover {
+            transform: scale(1.1);      /* Enlarge the icon a bit on hover */
+        }
+
+        .role-icons-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;             /* Spacing above and below the icon choices */
+        }
+        
+        .role-icon-choice.active {
+            color: #1877f2;  /* Blue color similar to Facebook's theme */
+        }
+
+        .lang-en {
+            display: none;
+        }
+        
+        .lang-it {
+            display: inline;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="lang-toggle-wrapper">
+            <button class="lang-toggle-btn" onclick="toggleLanguage()" id="langButton">English</button>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="compact-login-section">
+                <div class="compact-category-title" id="loginTitle">Accedi</div>
+                <div class="role-icons-container">
+                    <!-- Patient Icon -->
+                    <div class="role-icon-choice" data-role="patient" onclick="selectRole('patient')">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="lang-en">Patient</span>
+                        <span class="lang-it">Paziente</span>
+                    </div>
+                
+                    <!-- Doctor Icon -->
+                    <div class="role-icon-choice" data-role="doctor" onclick="selectRole('doctor')">
+                        <i class="fa fa-stethoscope fa-2x"></i>
+                        <span class="lang-en">Doctor</span>
+                        <span class="lang-it">Dottore</span>
+                    </div>
+                
+                    <!-- Company Icon -->
+                    <div class="role-icon-choice" data-role="company" onclick="selectRole('company')">
+                        <i class="fa fa-building fa-2x"></i>
+                        <span class="lang-en">Company</span>
+                        <span class="lang-it">Azienda</span>
+                    </div>
+                
+                    <!-- Laboratory Icon -->
+                    <div class="role-icon-choice" data-role="laboratory" onclick="selectRole('laboratory')">
+                        <i class="fa fa-flask fa-2x"></i>
+                        <span class="lang-en">Laboratory</span>
+                        <span class="lang-it">Laboratorio</span>
+                    </div>
+                
+                    <!-- Admin Icon -->
+                    <div class="role-icon-choice" data-role="admin" onclick="selectRole('admin')">
+                        <i class="fa fa-user-secret fa-2x"></i>
+                        <span class="lang-en">Admin</span>
+                        <span class="lang-it">Amministratore</span>
+                    </div>
+                </div>
+                
+                <form action="/your-login-endpoint" method="POST">
+                    <input type="hidden" id="roleInput" name="role" value=""> <!-- Hidden input to store the role -->
+                    <input type="email" class="form-control" id="email" placeholder="Indirizzo email" required>
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <button type="submit" class="btn custom-btn mb-2" id="loginButton">Accedi</button>
+                    <a href="/register" class="d-block mb-2" id="registerLink">Registrati</a>
+                    <a href="/forgot-password" class="d-block mb-2" id="forgotPasswordLink">Password dimenticata?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectRole(role) {
+            // Remove the active class from all roles
+            document.querySelectorAll('.role-icon-choice').forEach(function(icon) {
+                icon.classList.remove('active');
+            });
+
+            // Add the active class to the chosen role
+            document.querySelector(`.role-icon-choice[data-role="${role}"]`).classList.add('active');
+
+            // Update the hidden input's value
+            document.getElementById('roleInput').value = role;
+        }
+
+        let currentLanguage = 'Italian'; // Default language
+
+        function toggleLanguage() {
+            let englishElements = document.querySelectorAll('.lang-en');
+            let italianElements = document.querySelectorAll('.lang-it');
+
+            if (currentLanguage === 'Italian') {
+                englishElements.forEach(el => el.style.display = 'inline');
+                italianElements.forEach(el => el.style.display = 'none');
+
+                currentLanguage = 'English';
+                document.getElementById('langButton').innerText = 'Italiano';
+                document.getElementById('loginTitle').innerText = 'Login';
+                document.getElementById('email').placeholder = 'Email Address';
+                document.getElementById('password').placeholder = 'Password';
+                document.getElementById('loginButton').innerText = 'Login';
+                document.getElementById('registerLink').innerText = 'Register';
+                document.getElementById('forgotPasswordLink').innerText = 'Forgot Password?';
+            } else {
+                englishElements.forEach(el => el.style.display = 'none');
+                italianElements.forEach(el => el.style.display = 'inline');
+
+                currentLanguage = 'Italian';
+                document.getElementById('langButton').innerText = 'English';
+                document.getElementById('loginTitle').innerText = 'Accedi';
+                document.getElementById('email').placeholder = 'Indirizzo email';
+                document.getElementById('password').placeholder = 'Password';
+                document.getElementById('loginButton').innerText = 'Accedi';
+                document.getElementById('registerLink').innerText = 'Registrati';
+                document.getElementById('forgotPasswordLink').innerText = 'Password dimenticata?';
+            }
+        }
+
+    </script>
+</body>
+
+
+
+
