@@ -144,11 +144,27 @@
             color: #ffffff; /* Text becomes white on hover */
         }
         
-        /* This is just to keep in line with the theme. */
-        .fb-header {
-            color: #007bff; /* Matches the button border color */
+        .compact-login-section {
+            padding: 20px;
+            border: 2px solid #1877f2;   /* This is the border color and width used for the Medico section */
+            border-radius: 10px;         /* Rounded corners, same as Medico */
+            background-color: rgba(255, 255, 255, 0.8);  /* Slightly transparent white background, same as Medico */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   /* Adding a subtle shadow, same as Medico */
+            max-width: 400px;            /* Limit the width of the login section */
+            height: 120px;               /* Set a specific height */
+            display: flex;               /* Use flexbox to center contents */
+            flex-direction: column;      /* Stack children vertically */
+            justify-content: center;     /* Center children vertically */
+            align-items: center;         /* Center children horizontally */
         }
-
+        
+        .compact-category-title {
+            font-size: 1rem;             /* Smaller font size for the login title */
+            margin-bottom: 5px;          /* Reduced margin for compactness */
+            border-bottom: 1px solid #dcdcdc;   /* The border styling for the title, same as category-title */
+            padding-bottom: 10px;        /* Same padding bottom as category-title */
+        }
+        
     </style>
 </head>
 
@@ -185,6 +201,12 @@
                 <a href="#" class="custom-btn" data-lang-it="Visualizza Affiliati Azienda" data-lang-eng="View Affiliated Companies">Visualizza Affiliati Azienda</a>
                 <a href="#" class="custom-btn" data-lang-it="Gestisci Contratti e Accordi" data-lang-eng="Manage Contracts and Agreements">Gestisci Contratti e Accordi</a>
                 <a href="#" class="custom-btn" data-lang-it="Fatturazione e Pagamenti Azienda" data-lang-eng="Company Billing and Payments">Fatturazione e Pagamenti Azienda</a>
+            </div>
+
+            <!-- Login -->
+            <div class="category-section compact-login-section">
+                <h4 class="compact-category-title">Login</h4>   <!-- Changed heading level to h4 for a smaller heading -->
+                {loadmoduleid 148}
             </div>
         </div>
 
