@@ -105,6 +105,27 @@
             padding-top: 20px;
             border-top: 1px solid #ddd;
         }
+
+        /* Hide default file input */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Style the label to look like a button */
+        label {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #1877f2;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        label:hover {
+            background-color: #1565c0;
+        }
+
     </style>
 </head>
 
@@ -144,7 +165,7 @@
                 <h3 class="category-title">Azienda</h3>
                 <a href="#" class="custom-btn">Dettagli Azienda</a>
                 <a href="#" class="custom-btn">Calendario</a>
-                <a href="#" class="custom-btn">Visualizza Pazienti Affiliati</a>
+                <a href="#" class="custom-btn">Visualizza Azienda Affiliati</a>
                 <a href="#" class="custom-btn">Gestisci Contratti e Accordi</a>
                 <a href="#" class="custom-btn">Fatturazione e Pagamenti Azienda</a>
             </div>
@@ -155,14 +176,14 @@
                 <a href="#" class="custom-btn">Dettagli Laboratorio</a>
                 <a href="#" class="custom-btn">Calendario</a>
                 <a href="#" class="custom-btn">Gestisci Risultati e Rapporti delle analisi</a>
-                <a href="#" class="custom-btn">Pazienti Assegnati</a>
+                <a href="#" class="custom-btn">Laboratorio Assegnati</a>
                 <a href="#" class="custom-btn">Fatturazione e Pagamenti da/verso Laboratorio</a>
             </div>
         </div>
     
         <!-- Tables Container -->
         <div class="tables-container">
-            <!-- Paziente Details Table -->
+            <!-- Paziente Database Table -->
             <div id="Paziente-Dettagli-Paziente" class="option-details">
                 <h4>Dettagli Paziente</h4>
                 <table class="table">
@@ -175,19 +196,19 @@
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Codice Fiscale:</td>
+                        <td>Codice Fiscale/P.IVA:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Data di Nascita:</td>
-                        <td><input type="date"></td>
-                    </tr>
-                    <tr>
-                        <td>Indirizzo di residenza:</td>
+                        <td>Cod. univoco/SDI:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Luogo di nascita:</td>
+                        <td>Indirizzo di fatturazione:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cellulare:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
@@ -196,6 +217,39 @@
                     </tr>
                 </table>
                 <button class="btn btn-primary">Registrati</button>
+                <br><br><br><br>
+                <h4>Elenco Pazienti</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale/P.IVA</th>
+                            <th>Cod. univoco/SDI</th>
+                            <th>Indirizzo di fatturazione</th>
+                            <th>Cellulare</th>
+                            <th>Indirizzo email</th>
+                            <th>Azioni</th> <!-- Column for actions like edit, delete etc. -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
+                            <td>Via Roma, 10</td>
+                            <td>0123456789</td>
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <button class="btn btn-small btn-edit">📝 Modifica</button>
+                                <button class="btn btn-small btn-delete">❌ Elimina</button>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                    </tbody>
+                </table>
             </div>
 
             <!-- Storico Medico Table for Paziente -->
@@ -218,7 +272,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>YYYY-MM-DD</td>
+                            <td>dd-mm-yyyy</td>
                             <td>Descrizione dell'evento medico</td>
                             <td>Nome del medico</td>
                         </tr>
@@ -235,21 +289,29 @@
                     <input type="text" placeholder="Cerca il numero della fattura del paziente...">
                     <button class="btn btn-primary">Cerca</button>
                 </div>
+                
+                <br><br><br><br>
+
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Fattura N.</th>
+                            <th>Numero Fattura</th>
                             <th>Data</th>
-                            <th>Importo</th>
-                            <th>Stato Pagamento</th>
+                            <th>Stato del Pagamento</th>
+                            <th>Ricevuta</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>123</td>
-                            <td>YYYY-MM-DD</td>
-                            <td>Importo in €</td>
+                            <td>001</td>
+                            <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
+                            <td>
+                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
+                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
+                                <label for="ricevutaUpload001">Carica</label> |
+                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
+                            </td>
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -276,7 +338,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>YYYY-MM-DD</td>
+                            <td>dd-mm-yyyy</td>
                             <td>HH:MM</td>
                             <td>Nome del medico</td>
                             <td>Nome del paziente</td>
@@ -289,7 +351,7 @@
 
             <!-- Medico Details Table -->
             <div id="Medico-Dettagli-Medico" class="option-details">
-                <h4>Aggiorna Dettagli Medico</h4>
+                <h4>Dettagli Medico</h4>
                 <table class="table">
                     <tr>
                         <td>Nome:</td>
@@ -300,15 +362,60 @@
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Specializzazione:</td>
+                        <td>Codice Fiscale/P.IVA:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Email:</td>
-                        <td><input type="email"></td>
+                        <td>Cod. univoco/SDI:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo di fatturazione:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cellulare:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo email:</td>
+                        <td><input type="text"></td>
                     </tr>
                 </table>
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary">Registrati</button>
+                <br><br><br><br>
+                <h4>Elenco Medico</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale/P.IVA</th>
+                            <th>Cod. univoco/SDI</th>
+                            <th>Indirizzo di fatturazione</th>
+                            <th>Cellulare</th>
+                            <th>Indirizzo email</th>
+                            <th>Azioni</th> <!-- Column for actions like edit, delete etc. -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
+                            <td>Via Roma, 10</td>
+                            <td>0123456789</td>
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <button class="btn btn-small btn-edit">📝 Modifica</button>
+                                <button class="btn btn-small btn-delete">❌ Elimina</button>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                    </tbody>
+                </table>
             </div>
 
             <!-- Gestisci Disponibilità/Tempo Libero Table -->
@@ -317,8 +424,12 @@
                 <table class="table">
                     <tbody>
                         <tr>
+                            <td>Medico:</td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
                             <td>Giorno:</td>
-                            <td><input type="text" placeholder="Inserisci il giorno"></td>
+                            <td><input type="date"></td>
                         </tr>
                         <tr>
                             <td>Orario di inizio:</td>
@@ -330,7 +441,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-primary">Imposta</button>
+                <button class="btn btn-primary">Submit</button>
             </div>
 
             <!-- Pazienti Assegnati Table -->
@@ -339,6 +450,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Nome Medico</th>
                             <th>Nome Paziente</th>
                             <th>Data di Nascita</th>
                             <th>Ultima Visita</th>
@@ -350,7 +462,7 @@
                 </table>
             </div>
 
-            <!-- Note di Consultazione e Prescrizioni Table -->
+           <!-- Note di Consultazione e Prescrizioni Table -->
             <div id="Medico-Note-di-Consultazione-e-Prescrizioni" class="option-details">
                 <h4>Note di Consultazione e Prescrizioni</h4>
                 <table class="table">
@@ -358,123 +470,307 @@
                         <tr>
                             <th>Data</th>
                             <th>Nome Paziente</th>
+                            <th>Nome Medico</th>
                             <th>Nota</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Add rows as needed -->
-                    </tbody>
-                </table>
-        
-            </div>
-        
-            <!-- Fatturazione e Pagamenti Medico Table -->
-            <div id="Medico-Fatturazione-e-Pagamenti-Medico" class="option-details">
-                <h4>Fatturazione e Pagamenti Medico</h4>
-                <table class="table">
-                    <thead>
                         <tr>
-                            <th>Numero Fattura</th>
-                            <th>Data</th>
-                            <th>Importo</th>
-                            <th>Stato del Pagamento</th>
-                            <th>Descrizione</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>YYYY-MM-DD</td>
-                            <td>€ XX,XX</td>
-                            <td>Pagato / Non Pagato</td>
-                            <td>Descrizione del pagamento</td>
+                            <td>dd-mm-yyyy</td>
+                            <td>Nome del paziente</td>
+                            <td>Nome del medico</td>
+                            <td>
+                                📄 <!-- PDF icon placeholder -->
+                                <!-- Button to download the PDF -->
+                                <a href="path_to_pdf_file.pdf" download class="btn btn-primary">Caricare</a>
+                            </td>
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
                 </table>
             </div>
 
+        
+            <!-- Fatturazione e Pagamenti Medico Table -->
+            <div id="Medico-Fatturazione-e-Pagamenti-Medico" class="option-details">
+                <h4>Fatturazione e Pagamenti Medico</h4>
+
+                <div class="search-container">
+                    <input type="text" placeholder="Cerca il numero della fattura del Medico...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+                
+                <br><br><br><br>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Numero Fattura</th>
+                            <th>Data</th>
+                            <th>Stato del Pagamento</th>
+                            <th>Ricevuta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>dd-mm-yyyy</td>
+                            <td>Pagato / Non Pagato</td>
+                            <td>
+                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
+                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
+                                <label for="ricevutaUpload001">Carica</label> |
+                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Aggiorna Dettagli Azienda Table -->
             <div id="Azienda-Dettagli-Azienda" class="option-details">
-                <h4>Aggiorna Dettagli Azienda</h4>
+                <h4>Dettagli Azienda</h4>
                 <table class="table">
                     <tr>
-                        <td>Ragione Sociale:</td>
+                        <td>Nome:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Partita IVA:</td>
+                        <td>Cognome:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Indirizzo:</td>
+                        <td>Codice Fiscale/P.IVA:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td>Telefono:</td>
-                        <td><input type="tel"></td>
+                        <td>Cod. univoco/SDI:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo di fatturazione:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cellulare:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo email:</td>
+                        <td><input type="text"></td>
                     </tr>
                 </table>
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary">Registrati</button>
+                <br><br><br><br>
+                <h4>Elenco Azienda</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale/P.IVA</th>
+                            <th>Cod. univoco/SDI</th>
+                            <th>Indirizzo di fatturazione</th>
+                            <th>Cellulare</th>
+                            <th>Indirizzo email</th>
+                            <th>Azioni</th> <!-- Column for actions like edit, delete etc. -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
+                            <td>Via Roma, 10</td>
+                            <td>0123456789</td>
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <button class="btn btn-small btn-edit">📝 Modifica</button>
+                                <button class="btn btn-small btn-delete">❌ Elimina</button>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                    </tbody>
+                </table>
             </div>
 
             <!-- Calendario Table -->
             <div id="Azienda-Calendario" class="option-details">
                 <h4>Calendario</h4>
-                <!-- Add your calendar content here -->
-            </div>
+                
+                <h5>Prenota una visita</h5>
+                
+                <div class="booking-section">
+                    <!-- Service Type Dropdown -->
+                    <h6>Tipo di servizio:</h6>
+                    <select name="serviceType" id="serviceType">
+                        <option value="consultation">Consultazione con il medico</option>
+                        <option value="bloodTest">Esame del sangue</option>
+                        <option value="urinalysis">Analisi delle urine</option>
+                        <option value="xray">Radiografia (X-ray)</option>
+                        <option value="ultrasound">Ecografia</option>
+                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
+                        <option value="spirometry">Spirometria</option>
+                        <option value="boneDensity">Test di densità ossea</option>
+                        <option value="colonoscopy">Colonscopia</option>
+                        <option value="gastroscopy">Gastroscopia</option>
+                        <option value="allergyTest">Test allergologico</option>
+                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
+                        <option value="mammography">Mammografia</option>
+                        <!-- Add more types as needed -->
+                    </select>
+                    
+                    <!-- Date Picker -->
+                    <h6>Data:</h6>
+                    <input type="date" id="datePicker">
 
-            <!-- Visualizza Pazienti Affiliati Table -->
-            <div id="Azienda-Visualizza-Pazienti-Affiliati" class="option-details">
-                <h4>Visualizza Pazienti Affiliati</h4>
+                    <!-- Time Dropdown -->
+                    <h6>Orario:</h6>
+                    <input type="time" id="timePicker">
+
+                    <!-- Book Button -->
+                    <button class="btn btn-primary">Prenota</button>
+                </div>
+                
+                <!-- You can add an actual calendar display below if needed -->
+                <h5>Prenotazioni esistenti</h5>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome Paziente</th>
-                            <th>Cognome Paziente</th>
-                            <th>Data di Nascita</th>
-                            <th>Ultimo Appuntamento</th>
+                            <th>Tipo di servizio</th>
+                            <th>Data</th>
+                            <th>Orario</th>
+                            <th>Nome Azienda</th>
+                            <th>Nome Medico</th>
+                            <th>Azioni</th>  <!-- for any actions like delete or edit -->
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- This would ideally be populated dynamically based on your server's data -->
                         <tr>
-                            <td>Nome1</td>
-                            <td>Cognome1</td>
-                            <td>YYYY-MM-DD</td>
-                            <td>YYYY-MM-DD</td>
+                            <td>Esame del sangue</td>
+                            <td>2023-09-10</td>
+                            <td>10:00</td>
+                            <td>Sant Andrea</td>
+                            <td>Dr. Anita</td>
+                            <td>
+                                <button class="btn btn-edit">Modifica</button>
+                                <button class="btn btn-delete">Elimina</button>
+                            </td>
                         </tr>
-                        <!-- Add more rows as needed -->
+                        <!-- Add more rows based on bookings -->
                     </tbody>
                 </table>
             </div>
 
-            <!-- Gestisci Contratti e Accordi Table -->
-            <div id="Azienda-Gestisci-Contratti" class="option-details">
-                <h4>Gestisci Contratti e Accordi</h4>
-                <!-- Add your contract and agreements content here -->
+
+            <!-- Visualizza Pazienti Affiliati Table -->
+            <div id="Azienda-Visualizza-Azienda-Affiliati" class="option-details">
+                <h4>Visualizza Azienda Affiliati</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome Azienda</th>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale/P.IVA</th>
+                            <th>Cod. univoco/SDI</th>
+                            <th>Indirizzo di fatturazione</th>
+                            <th>Cellulare</th>
+                            <th>Indirizzo email</th>
+                            <th>Documento (PDF)</th> <!-- Column to view & download the PDF -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Sant Andrea</td>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
+                            <td>Via Roma, 10</td>
+                            <td>0123456789</td>
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <a href="path_to_pdf_file.pdf" download>
+                                    <img src="pdf_icon.png" alt="Download PDF" title="Scarica il documento PDF">
+                                </a>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                    </tbody>
+                </table>
             </div>
+
+
+            <!-- Gestisci Contratti e Accordi Table -->
+            <div id="Azienda-Gestisci-Contratti-e-Accordi" class="option-details">
+                <h4>Gestisci Contratti e Accordi</h4>
+
+                <!-- Search bar for company name -->
+                <div class="search-container">
+                    <input type="text" id="searchCompany" placeholder="Cerca per nome dell'azienda...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome Azienda</th>
+                            <th>Contratto</th> <!-- Column to view & download the contract -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Sant Andrea</td>
+                            <td>
+                                <a href="path_to_contract.pdf" download>
+                                    <img src="pdf_icon.png" alt="Download Contract" title="Scarica il contratto">
+                                </a>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
+                    </tbody>
+                </table>
+            </div>
+
 
             <!-- Fatturazione e Pagamenti Azienda Table -->
             <div id="Azienda-Fatturazione-e-Pagamenti-Azienda" class="option-details">
                 <h4>Fatturazione e Pagamenti Azienda</h4>
+                <div class="search-container">
+                    <input type="text" placeholder="Cerca il numero della fattura del Azienda...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+                
+                <br><br><br><br>
+
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Numero Fattura</th>
                             <th>Data</th>
-                            <th>Importo</th>
                             <th>Stato del Pagamento</th>
-                            <th>Descrizione</th>
+                            <th>Ricevuta</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>001</td>
-                            <td>YYYY-MM-DD</td>
-                            <td>€ XX,XX</td>
+                            <td>dd-mm-yyyy</td>
                             <td>Pagato / Non Pagato</td>
-                            <td>Descrizione del pagamento</td>
+                            <td>
+                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
+                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
+                                <label for="ricevutaUpload001">Carica</label> |
+                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
+                            </td>
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
@@ -486,90 +782,239 @@
             <div id="Laboratorio-Dettagli-Laboratorio" class="option-details">
                 <h4>Dettagli Laboratorio</h4>
                 <table class="table">
+                    <tr>
+                        <td>Nome:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cognome:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Codice Fiscale/P.IVA:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cod. univoco/SDI:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo di fatturazione:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Cellulare:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Indirizzo email:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary">Registrati</button>
+                <br><br><br><br>
+                <h4>Elenco Laboratorio</h4>
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome del Laboratorio</th>
-                            <th>Ubicazione</th>
-                            <th>Informazioni di Contatto</th>
-                            <th>Orari di Apertura</th>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice Fiscale/P.IVA</th>
+                            <th>Cod. univoco/SDI</th>
+                            <th>Indirizzo di fatturazione</th>
+                            <th>Cellulare</th>
+                            <th>Indirizzo email</th>
+                            <th>Azioni</th> <!-- Column for actions like edit, delete etc. -->
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Righe per i dettagli di ogni laboratorio -->
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>CF1234567890</td>
+                            <td>2023-01-01</td>
+                            <td>Via Roma, 10</td>
+                            <td>0123456789</td>
+                            <td>mario.rossi@example.com</td>
+                            <td>
+                                <button class="btn btn-small btn-edit">📝 Modifica</button>
+                                <button class="btn btn-small btn-delete">❌ Elimina</button>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
                     </tbody>
                 </table>
             </div>
             
-            <!-- Calendario Tabella -->
+            <!-- Calendario Table -->
             <div id="Laboratorio-Calendario" class="option-details">
-                <h4>Calendario</h4>
+                <h4>Calendario Laboratorio</h4>
+                
+                <h5>Prenota un esame</h5>
+                
+                <div class="booking-section">
+                    <!-- Test Type Dropdown -->
+                    <h6>Tipo di esame:</h6>
+                    <select name="testType" id="testType">
+                        <option value="bloodTest">Esame del sangue</option>
+                        <option value="urinalysis">Analisi delle urine</option>
+                        <option value="xray">Radiografia (X-ray)</option>
+                        <option value="ultrasound">Ecografia</option>
+                        <option value="ecg">Elettrocardiogramma (ECG or EKG)</option>
+                        <option value="spirometry">Spirometria</option>
+                        <option value="boneDensity">Test di densità ossea</option>
+                        <option value="colonoscopy">Colonscopia</option>
+                        <option value="gastroscopy">Gastroscopia</option>
+                        <option value="allergyTest">Test allergologico</option>
+                        <option value="stdTest">Test per MST/IST (malattie sessualmente trasmissibili)</option>
+                        <option value="mammography">Mammografia</option>
+                        <!-- Add more tests as needed -->
+                    </select>
+                    
+                    <!-- Date Picker -->
+                    <h6>Data:</h6>
+                    <input type="date" id="datePicker">
+
+                    <!-- Time Dropdown -->
+                    <h6>Orario:</h6>
+                    <input type="time" id="timePicker">
+
+                    <!-- Book Button -->
+                    <button class="btn btn-primary">Prenota</button>
+                </div>
+                
+                <!-- Display of booked tests -->
+                <h5>Esami prenotati</h5>
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Tipo di esame</th>
                             <th>Data</th>
-                            <th>Ora</th>
-                            <th>Nome Evento/Compito</th>
-                            <th>Descrizione</th>
+                            <th>Orario</th>
+                            <th>Nome Laboratorio</th>
+                            <th>Nome Tecnico</th>
+                            <th>Azioni</th>  <!-- for any actions like delete or edit -->
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Righe per ogni evento del calendario -->
+                        <!-- This would ideally be populated dynamically based on your server's data -->
+                        <tr>
+                            <td>Esame del sangue</td>
+                            <td>2023-09-10</td>
+                            <td>10:00</td>
+                            <td>Laboratorio San Marco</td>
+                            <td>Tecnico Bianca</td>
+                            <td>
+                                <button class="btn btn-edit">Modifica</button>
+                                <button class="btn btn-delete">Elimina</button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows based on bookings -->
                     </tbody>
                 </table>
             </div>
+
 
             <!-- Gestisci Risultati e Rapporti delle analisi Tabella -->
-            <div id="Laboratorio-Risultati-Rapporti" class="option-details">
+            <div id="Laboratorio-Gestisci-Risultati-e-Rapporti-delle-analisi" class="option-details">
                 <h4>Gestisci Risultati e Rapporti delle Analisi</h4>
+                <!-- Search bar for supplier/partner name -->
+                <div class="search-container">
+                    <input type="text" id="searchSupplier" placeholder="Cerca per nome del Laboratorio...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome Paziente</th>
-                            <th>Data dell'Esame</th>
-                            <th>Tipo di Test</th>
-                            <th>Risultati</th>
-                            <th>Osservazioni del Medico</th>
+                            <th>Nome Laboratorio</th>
+                            <th>Contratto</th> <!-- Column to view & download the contract -->
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Righe per ogni risultato del test -->
+                        <!-- Example Row -->
+                        <tr>
+                            <td>ABC Forniture Mediche</td>
+                            <td>
+                                <a href="path_to_contract.pdf" download>
+                                    <img src="pdf_icon.png" alt="Download Contract" title="Scarica il contratto">
+                                </a>
+                            </td>                            
+                        </tr>
+                        <!-- More rows will be added here dynamically as you retrieve data from the database -->
                     </tbody>
                 </table>
             </div>
 
-            <!-- Pazienti Assegnati Tabella -->
-            <div id="Laboratorio-Pazienti-Assegnati" class="option-details">
-                <h4>Pazienti Assegnati</h4>
+            <!-- Assegnati Laboratorio Table -->
+            <div id="Laboratorio-Laboratorio-Assegnati" class="option-details">
+                <h4>Laboratori Assegnati</h4>
+
+                <!-- Search Container -->
+                <div class="search-container">
+                    <!-- Search bar for laboratory name -->
+                    <input type="text" id="searchLab" placeholder="Cerca per nome del laboratorio...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+
+                <!-- Laboratory Table -->
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome Paziente</th>
-                            <th>Data di Assegnazione</th>
-                            <th>Medico Assegnato</th>
-                            <th>Data dell'Ultima Visita</th>
+                            <th>Nome Laboratorio</th>
+                            <th>Ubicazione</th>
+                            <th>Contatto</th>
+                            <th>Dettagli</th> 
+                            <!-- Additional columns as needed -->
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Righe per ogni paziente assegnato -->
+                        <!-- Example Row -->
+                        <tr>
+                            <td>ABC Laboratorio</td>
+                            <td>Via Roma, 10</td>
+                            <td>0123456789</td>
+                            <td>Dettagli Specifici</td>
+                        </tr>
+                        <!-- Additional rows will be populated dynamically from the database -->
                     </tbody>
                 </table>
             </div>
+
 
             <!-- Fatturazione e Pagamenti da/verso Laboratorio Tabella -->
-            <div id="Laboratorio-Fatturazione-Pagamenti" class="option-details">
+            <div id="Laboratorio-Fatturazione-e-Pagamenti-da-verso-Laboratorio" class="option-details">
                 <h4>Fatturazione e Pagamenti da/verso Laboratorio</h4>
+                <div class="search-container">
+                    <input type="text" placeholder="Cerca il numero della fattura del Laboratorio...">
+                    <button class="btn btn-primary">Cerca</button>
+                </div>
+                
+                <br><br><br><br>
+
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Numero Fattura</th>
                             <th>Data</th>
-                            <th>Importo</th>
                             <th>Stato del Pagamento</th>
-                            <th>Descrizione</th>
+                            <th>Ricevuta</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Righe per ogni fattura/pagamento -->
+                        <tr>
+                            <td>001</td>
+                            <td>dd-mm-yyyy</td>
+                            <td>Pagato / Non Pagato</td>
+                            <td>
+                                <a href="path_to_pdf_file.pdf" target="_blank">Visualizza</a> | 
+                                <input type="file" accept=".pdf" name="ricevutaUpload" id="ricevutaUpload001">
+                                <label for="ricevutaUpload001">Carica</label> |
+                                <a href="path_to_pdf_file.pdf" download>Scarica</a>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
                     </tbody>
                 </table>
             </div>
@@ -608,5 +1053,4 @@
     </script>
 
 </body>
-
 
